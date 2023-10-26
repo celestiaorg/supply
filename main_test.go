@@ -22,3 +22,12 @@ func TestCirculating(t *testing.T) {
 		})
 	}
 }
+
+func FuzzAvailableMustBeGreaterThanCirculating(f *testing.F) {
+	f.Fuzz(func(t *testing.T, unixTime int64) {
+		time := time.Unix(unixTime, 0)
+		available := Available(time)
+		circulating := Circulating(time)
+		require.GreaterOrEqual(t, available, circulating)
+	})
+}
