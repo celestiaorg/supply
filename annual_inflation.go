@@ -14,7 +14,7 @@ func inflationRate(yearsSinceGenesis int64) float64 {
 	return max(inflationRate(yearsSinceGenesis-1)*inflationRateDecay, minInflationRate)
 }
 
-func totalSupply(yearsSinceGenesis int64) int64 {
+func totalSupply(yearsSinceGenesis int64) float64 {
 	if yearsSinceGenesis == 0 {
 		return initialTotalSupply
 	}
@@ -22,10 +22,10 @@ func totalSupply(yearsSinceGenesis int64) int64 {
 	return totalSupply(yearsSinceGenesis-1) + annualInflation(yearsSinceGenesis-1)
 }
 
-func annualInflation(yearsSinceGenesis int64) int64 {
-	return int64(inflationRate(yearsSinceGenesis) * float64(totalSupply(yearsSinceGenesis)))
+func annualInflation(yearsSinceGenesis int64) float64 {
+	return inflationRate(yearsSinceGenesis) * float64(totalSupply(yearsSinceGenesis))
 }
 
-func dailyInflationForYear(yearsSinceGenesis int64) int64 {
+func dailyInflationForYear(yearsSinceGenesis int64) float64 {
 	return annualInflation(yearsSinceGenesis) / 365
 }

@@ -10,7 +10,7 @@ import (
 func Test_cumulativeInflation(t *testing.T) {
 	type testCase struct {
 		daysSinceGenesis int64
-		want             int64
+		want             float64
 	}
 
 	testCases := []testCase{
@@ -18,6 +18,10 @@ func Test_cumulativeInflation(t *testing.T) {
 		{1, 219_178},
 		{2, 438_356},
 		{3, 657_534},
+		{15, 3_287_671},
+		{25, 5_479_452},
+		{50, 10_958_904},
+		{100, 21_917_808},
 		{364, 79_780_822},
 		{365, 80_000_000},
 		{366, 80_213_041},
