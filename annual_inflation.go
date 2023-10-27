@@ -1,9 +1,9 @@
 package supply
 
 const (
-	utiaPerTia               = 1_000_000                            // 1 tia = 1 million utia
-	initialTotalSupplyInTia  = 1_000_000_000                        // 1 billion tia
-	initialTotalSupplyInUtia = initialTotalSupplyInTia * utiaPerTia // 1 quadrillion utia
+	utiaPerTia               = 1_000_000                       // 1 tia = 1 million utia
+	initialTotalSupply       = 1_000_000_000                   // 1 billion tia
+	initialTotalSupplyInUtia = initialTotalSupply * utiaPerTia // 1 quadrillion utia
 	initialInflationRate     = 0.08
 	inflationRateDecay       = 0.9
 	minInflationRate         = 0.015
