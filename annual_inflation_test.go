@@ -23,7 +23,7 @@ func Test_dailyInflation(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf("yearsSinceGenesis %v", tc.yearsSinceGenesis), func(t *testing.T) {
-			got := dailyInflation(tc.yearsSinceGenesis)
+			got := dailyInflationForYear(tc.yearsSinceGenesis)
 			assert.Equal(t, got, tc.want)
 		})
 	}
