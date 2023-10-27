@@ -1,6 +1,6 @@
 package supply
 
-func cumulativeInflation(daysSinceGenesis int64) float64 {
+func cumulativeInflation(daysSinceGenesis int64) int64 {
 	if daysSinceGenesis == 0 {
 		return 0
 	}
@@ -8,7 +8,7 @@ func cumulativeInflation(daysSinceGenesis int64) float64 {
 	return cumulativeInflation(daysSinceGenesis-1) + dailyInflationForDay(daysSinceGenesis-1)
 }
 
-func dailyInflationForDay(daysSinceGenesis int64) float64 {
+func dailyInflationForDay(daysSinceGenesis int64) int64 {
 	if daysSinceGenesis == 0 {
 		return dailyInflationForYear(0)
 	}
