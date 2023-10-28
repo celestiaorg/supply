@@ -11,7 +11,7 @@ const (
 	coreContributorsTotal       = 176_365_875 * utiaPerTia
 )
 
-var TGE = time.Date(2023, time.October, 31, 0, 0, 0, 0, time.UTC)
+var TGE = time.Date(2023, time.October, 31, 14, 0, 0, 0, time.UTC)
 
 // Circulating returns the circulating supply of utia at the given time.
 func Circulating(t time.Time) int64 {
