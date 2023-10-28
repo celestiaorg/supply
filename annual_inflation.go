@@ -4,16 +4,24 @@ const (
 	utiaPerTia               = 1_000_000                       // 1 tia = 1 million utia
 	initialTotalSupply       = 1_000_000_000                   // 1 billion tia
 	initialTotalSupplyInUtia = initialTotalSupply * utiaPerTia // 1 quadrillion utia
-	initialInflationRate     = 0.08
-	inflationRateDecay       = 0.9
-	minInflationRate         = 0.015
+
+	// initialInflationRate is the inflation rate that the network starts at.
+	initialInflationRate = 0.08
+	// disinflationRate is the rate at which the inflation rate decreases each year.
+	disinflationRate = 0.1
+	// inflationRateDecay is the percent of the previous year's inflation that is retained.
+	inflationRateDecay = 1 - disinflationRate
+	// targetInflationRate is the inflation rate that the network aims to
+	// stabalize at. In practice, TargetInflationRate acts as a minimum so that
+	// the inflation rate doesn't decrease after reaching it.
+	targetInflationRate = 0.015
 )
 
 func inflationRate(yearsSinceGenesis int64) float64 {
 	if yearsSinceGenesis == 0 {
 		return initialInflationRate
 	}
-	return max(inflationRate(yearsSinceGenesis-1)*inflationRateDecay, minInflationRate)
+	return max(inflationRate(yearsSinceGenesis-1)*inflationRateDecay, targetInflationRate)
 }
 
 func totalSupply(yearsSinceGenesis int64) int64 {
