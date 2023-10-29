@@ -19,3 +19,12 @@ Supply contains utilities for calculating the total available and circulating su
     # Query the supply at a given date
     curl http://localhost:8080/supply/2024-10-31
     ```
+
+## Contributing
+
+### Helpful commands
+
+```shell
+# Run all tests
+make test
+```
