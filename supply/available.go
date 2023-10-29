@@ -2,8 +2,8 @@ package supply
 
 import "time"
 
-// availableSupply returns the available supply of utia at the given time.
-func availableSupply(t time.Time) int64 {
+// AvailableSupply returns the available supply of utia at the given time.
+func AvailableSupply(t time.Time) int64 {
 	days := daysSinceGenesis(t)
 	return cumulativeInflation(days) +
 		publicAllocationAvailable(t) +

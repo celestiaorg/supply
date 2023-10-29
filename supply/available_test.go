@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func Test_availableSupply(t *testing.T) {
+func TestAvailableSupply(t *testing.T) {
 	type testCase struct {
 		time time.Time
 		want int64
@@ -21,7 +21,7 @@ func Test_availableSupply(t *testing.T) {
 	}
 	for _, tc := range testCases {
 		t.Run(tc.time.String(), func(t *testing.T) {
-			got := availableSupply(tc.time)
+			got := AvailableSupply(tc.time)
 			require.Equal(t, tc.want, got)
 		})
 	}
