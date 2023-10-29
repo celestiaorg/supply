@@ -6,7 +6,7 @@ import (
 
 const (
 	publicAllocation      = 75_000_000 * utiaPerTia // depends on governance
-	ecosystemAllocation   = 0                       // depends on governance
+	ecosystemAllocation   = 50_000_000 * utiaPerTia
 	investorsTotal        = 355_689_414 * utiaPerTia
 	coreContributorsTotal = 176_365_875 * utiaPerTia
 )
