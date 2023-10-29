@@ -19,8 +19,6 @@ func publicAllocationAvailable(t time.Time) int64 {
 	return publicAllocationTotal
 }
 
-// 25% unlocked at launch. Remaining 75% unlocks continuously from year 1 to
-// year 4.
 func ecosystemAvailable(t time.Time) int64 {
 	if t.Before(TGE) {
 		return 0
@@ -30,6 +28,8 @@ func ecosystemAvailable(t time.Time) int64 {
 	}
 	days := daysSinceGenesis(t)
 	unlockedAtLaunch := ecosystem / 4
+	// 25% unlocked at launch. Remaining 75% unlocks continuously from year 1 to
+	// year 4.
 	return int64(unlockedAtLaunch) + days*ecosystem*3/4/(365*3)
 
 }

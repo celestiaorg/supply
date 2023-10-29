@@ -25,8 +25,6 @@ func publicAllocationCirculating(t time.Time) int64 {
 	return publicAllocationGenesis
 }
 
-// ecosystemCirculating returns the circulating supply of utia in the ecosystem category at the given time.
-// 25% unlocked at launch. Remaining 75% unlocks continuously from year 1 to year 4.
 func ecosystemCirculating(t time.Time) int64 {
 	if t.Before(TGE) {
 		return 0
@@ -36,10 +34,6 @@ func ecosystemCirculating(t time.Time) int64 {
 	return 50_000_000 * utiaPerTia
 }
 
-// investorsCirculating returns the circulating supply of utia in the investors
-// category at the given time. 1/3 of investor tokens unlocks in a chunk at TGE
-// + 1 year. The remaining 2/3 of investor tokens unlocks linearly from TGE + 1
-// year to TGE + 2 years.
 func investorsCirculating(t time.Time) int64 {
 	if t.Before(oneYearAfterTGE) {
 		return 0
@@ -47,14 +41,13 @@ func investorsCirculating(t time.Time) int64 {
 	if t.Equal(twoYearsAfterTGE) || t.After(twoYearsAfterTGE) {
 		return investorsTotal
 	}
+	// 1/3 of investor tokens unlocks in a chunk at TGE + 1 year. The remaining
+	// 2/3 of investor tokens unlocks linearly from TGE + 1 year to TGE + 2
+	// years.
 	days := daysSinceGenesis(t)
 	return investorsTotal/3 + investorsTotal*2/3/365*(days-365)
 }
 
-// coreContributorsCirculating returns the circulating supply of utia in the
-// core contributors category at the given time. 1/3 of core contributor tokens
-// unlocks in a chunk at TGE + 1 year. The remaining 2/3 of tokens unlocks
-// linearly from TGE + 1 year to TGE + 3 years.
 func coreContributorsCirculating(t time.Time) int64 {
 	if t.Before(oneYearAfterTGE) {
 		return 0
@@ -62,6 +55,9 @@ func coreContributorsCirculating(t time.Time) int64 {
 	if t.Equal(threeYearsAfterTGE) || t.After(threeYearsAfterTGE) {
 		return coreContributorsTotal
 	}
+	// 1/3 of core contributor tokens unlocks in a chunk at TGE + 1 year. The
+	// remaining 2/3 of tokens unlocks linearly from TGE + 1 year to TGE + 3
+	// years.
 	days := daysSinceGenesis(t)
 	return coreContributorsTotal/3 + coreContributorsTotal*2/3/(365*2)*(days-365)
 }
