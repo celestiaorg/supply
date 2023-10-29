@@ -44,7 +44,7 @@ func main() {
 	router := gin.Default()
 	router.GET("/supply", getSupply)
 	router.GET("/supply/:date", getSupplyByDate)
-	err := router.Run("localhost:8080")
+	err := router.Run("0.0.0.0:8080")
 	if err != nil {
 		panic(err)
 	}
