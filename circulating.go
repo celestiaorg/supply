@@ -5,10 +5,10 @@ import (
 )
 
 const (
-	publicAllocationCirculating = 75_000_000 * utiaPerTia // depends on governance
-	ecosystemCirculating        = 0                       // depends on governance
-	investorsTotal              = 355_689_414 * utiaPerTia
-	coreContributorsTotal       = 176_365_875 * utiaPerTia
+	publicAllocation      = 75_000_000 * utiaPerTia // depends on governance
+	ecosystemAllocation   = 0                       // depends on governance
+	investorsTotal        = 355_689_414 * utiaPerTia
+	coreContributorsTotal = 176_365_875 * utiaPerTia
 )
 
 var TGE = time.Date(2023, time.October, 31, 14, 0, 0, 0, time.UTC)
@@ -21,9 +21,23 @@ func circulatingSupply(t time.Time) int64 {
 
 	daysSinceGenesis := int64(t.Sub(TGE).Hours() / 24)
 	if daysSinceGenesis < 365 {
-		return publicAllocationCirculating + ecosystemCirculating + cumulativeInflation(daysSinceGenesis)
+		return publicAllocationCirculating(t) + ecosystemAllocationCirculating(t) + cumulativeInflation(daysSinceGenesis)
 	}
-	return publicAllocationCirculating + ecosystemCirculating + cumulativeInflation(daysSinceGenesis) + investorsCirculating(t) + coreContributorsCirculating(t)
+	return publicAllocationCirculating(t) + ecosystemAllocationCirculating(t) + cumulativeInflation(daysSinceGenesis) + investorsCirculating(t) + coreContributorsCirculating(t)
+}
+
+func publicAllocationCirculating(t time.Time) int64 {
+	if t.Before(TGE) {
+		return 0
+	}
+	return publicAllocation
+}
+
+func ecosystemAllocationCirculating(t time.Time) int64 {
+	if t.Before(TGE) {
+		return 0
+	}
+	return ecosystemAllocation
 }
 
 func investorsCirculating(t time.Time) int64 {
