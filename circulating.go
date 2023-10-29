@@ -52,9 +52,11 @@ func investorsCirculating(t time.Time) int64 {
 }
 
 func coreContributorsCirculating(t time.Time) int64 {
-	if t.Before(TGE) {
+	if t.Before(oneYearAfterTGE) {
 		return 0
 	}
 	daysSinceGenesis := int64(t.Sub(TGE).Hours() / 24)
+	// 1/3 of total unlocks in chunk at TGE + 1 year.
+	// Remaining 2/3 of total unlocks from TGE + 1 year to TGE + 3 years.
 	return int64(min(coreContributorsTotal/3+coreContributorsTotal*2/3/(365*2)*(daysSinceGenesis-365), coreContributorsTotal))
 }
