@@ -20,10 +20,10 @@ func circulatingSupply(t time.Time) int64 {
 		return 0
 	}
 
-	daysSinceGenesis := int64(t.Sub(TGE).Hours() / 24)
+	days := daysSinceGenesis(t)
 	return publicAllocationCirculating(t) +
 		ecosystemAllocationCirculating(t) +
-		cumulativeInflation(daysSinceGenesis) +
+		cumulativeInflation(days) +
 		investorsCirculating(t) +
 		coreContributorsCirculating(t)
 }
@@ -46,18 +46,25 @@ func investorsCirculating(t time.Time) int64 {
 	if t.Before(oneYearAfterTGE) {
 		return 0
 	}
-	daysSinceGenesis := int64(t.Sub(TGE).Hours() / 24)
+	days := daysSinceGenesis(t)
 	// 1/3 of total unlocks in chunk at TGE + 1 year.
 	// Remaining 2/3 of total unlocks from TGE + 1 year to TGE + 2 years.
-	return min(investorsTotal/3+investorsTotal*2/3/365*(daysSinceGenesis-365), investorsTotal)
+	return min(investorsTotal/3+investorsTotal*2/3/365*(days-365), investorsTotal)
 }
 
 func coreContributorsCirculating(t time.Time) int64 {
 	if t.Before(oneYearAfterTGE) {
 		return 0
 	}
-	daysSinceGenesis := int64(t.Sub(TGE).Hours() / 24)
+	days := daysSinceGenesis(t)
 	// 1/3 of total unlocks in chunk at TGE + 1 year.
 	// Remaining 2/3 of total unlocks from TGE + 1 year to TGE + 3 years.
-	return int64(min(coreContributorsTotal/3+coreContributorsTotal*2/3/(365*2)*(daysSinceGenesis-365), coreContributorsTotal))
+	return int64(min(coreContributorsTotal/3+coreContributorsTotal*2/3/(365*2)*(days-365), coreContributorsTotal))
+}
+
+func daysSinceGenesis(t time.Time) int64 {
+	if t.Before(TGE) {
+		return 0
+	}
+	return int64(t.Sub(TGE).Hours() / 24)
 }
