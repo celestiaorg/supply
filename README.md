@@ -25,6 +25,6 @@ Supply contains utilities for calculating the total available and circulating su
 ### Helpful commands
 
 ```shell
-# Run all tests
-make test
+# Get more info on available make commands.
+make help
 ```

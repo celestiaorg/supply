@@ -1,4 +1,4 @@
-## help: Get more info on make commands.
+## help: Get more info on available make commands.
 help: Makefile
 	@echo " Choose a command run in "$(PROJECTNAME)":"
 	@sed -n 's/^##//p' $< | column -t -s ':' |  sed -e 's/^/ /'
@@ -10,7 +10,7 @@ test:
 	@go test -timeout 5m ./...
 .PHONY: test
 
-## lint: Run golangci-lint
+## lint: Run golangci-lint.
 lint:
 	@echo "--> Running golangci-lint"
 	@golangci-lint run
