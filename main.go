@@ -1,60 +1,28 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
 	"time"
 
 	"github.com/celestiaorg/supply/supply"
+	"github.com/gin-gonic/gin"
 )
 
-func circulatingHandler(w http.ResponseWriter, r *http.Request) {
-	// Parse query parameters
-	dateStr := r.URL.Query().Get("date")
-	if dateStr == "" {
-		http.Error(w, "`date` query parameter is required", http.StatusBadRequest)
-		return
-	}
-
-	// Parse date
-	t, err := time.Parse("2006-01-02", dateStr)
-	if err != nil {
-		http.Error(w, "Invalid date format. Use YYYY-MM-DD.", http.StatusBadRequest)
-		return
-	}
-
-	// Calculate circulating supply
-	circulating := supply.CirculatingSupply(t)
-
-	// Write response
-	fmt.Fprintf(w, "Circulating Supply for %s: %d", dateStr, circulating)
+type response struct {
+	Available   int64 `json:"available"`
+	Circulating int64 `json:"circulating"`
 }
 
-func availableHandler(w http.ResponseWriter, r *http.Request) {
-	// Parse query parameters
-	dateStr := r.URL.Query().Get("date")
-	if dateStr == "" {
-		http.Error(w, "`date` query parameter is required", http.StatusBadRequest)
-		return
-	}
-
-	// Parse date
-	t, err := time.Parse("2006-01-02", dateStr)
-	if err != nil {
-		http.Error(w, "Invalid date format. Use YYYY-MM-DD.", http.StatusBadRequest)
-		return
-	}
-
-	// Calculate available supply
-	available := supply.AvailableSupply(t)
-
-	// Write response
-	fmt.Fprintf(w, "Available Supply for %s: %d", dateStr, available)
+// getSupply responds with the list of all albums as JSON.
+func getSupply(c *gin.Context) {
+	c.IndentedJSON(http.StatusOK, response{
+		Available:   supply.AvailableSupply(time.Now()),
+		Circulating: supply.CirculatingSupply(time.Now()),
+	})
 }
 
 func main() {
-	http.HandleFunc("/circulating", circulatingHandler)
-	http.HandleFunc("/available", availableHandler)
-	fmt.Println("Starting server on :8080...")
-	http.ListenAndServe(":8080", nil)
+	router := gin.Default()
+	router.GET("/supply", getSupply)
+	router.Run("localhost:8080")
 }
