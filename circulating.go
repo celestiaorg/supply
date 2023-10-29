@@ -13,8 +13,8 @@ const (
 
 var TGE = time.Date(2023, time.October, 31, 14, 0, 0, 0, time.UTC)
 
-// Circulating returns the circulating supply of utia at the given time.
-func Circulating(t time.Time) int64 {
+// circulatingSupply returns the circulating supply of utia at the given time.
+func circulatingSupply(t time.Time) int64 {
 	if t.Before(TGE) {
 		return 0
 	}
