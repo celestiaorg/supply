@@ -41,11 +41,17 @@ func ecosystemAllocationCirculating(t time.Time) int64 {
 }
 
 func investorsCirculating(t time.Time) int64 {
+	if t.Before(TGE) {
+		return 0
+	}
 	daysSinceGenesis := int64(t.Sub(TGE).Hours() / 24)
 	return int64(min(investorsTotal/3+investorsTotal*2/3/365*(daysSinceGenesis-365), investorsTotal))
 }
 
 func coreContributorsCirculating(t time.Time) int64 {
+	if t.Before(TGE) {
+		return 0
+	}
 	daysSinceGenesis := int64(t.Sub(TGE).Hours() / 24)
 	return int64(min(coreContributorsTotal/3+coreContributorsTotal*2/3/(365*2)*(daysSinceGenesis-365), coreContributorsTotal))
 }
