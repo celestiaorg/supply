@@ -13,6 +13,8 @@ const (
 
 var TGE = time.Date(2023, time.October, 31, 14, 0, 0, 0, time.UTC)
 var oneYearAfterTGE = TGE.AddDate(1, 0, 0)
+var twoYearsAfterTGE = TGE.AddDate(2, 0, 0)
+var threeYearsAfterTGE = TGE.AddDate(3, 0, 0)
 
 // circulatingSupply returns the circulating supply of utia at the given time.
 func circulatingSupply(t time.Time) int64 {
@@ -46,10 +48,14 @@ func investorsCirculating(t time.Time) int64 {
 	if t.Before(oneYearAfterTGE) {
 		return 0
 	}
+	if t.Equal(twoYearsAfterTGE) || t.After(twoYearsAfterTGE) {
+		return investorsTotal
+	}
+	// 1/3 of investor tokens unlocks in a chunk at TGE + 1 year. The remaining
+	// 2/3 of investor tokens unlocks linearly from TGE + 1 year to TGE + 2
+	// years.
 	days := daysSinceGenesis(t)
-	// 1/3 of total unlocks in chunk at TGE + 1 year.
-	// Remaining 2/3 of total unlocks from TGE + 1 year to TGE + 2 years.
-	return min(investorsTotal/3+investorsTotal*2/3/365*(days-365), investorsTotal)
+	return investorsTotal/3 + investorsTotal*2/3/365*(days-365)
 }
 
 func coreContributorsCirculating(t time.Time) int64 {
