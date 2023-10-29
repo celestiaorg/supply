@@ -21,10 +21,11 @@ func circulatingSupply(t time.Time) int64 {
 	}
 
 	daysSinceGenesis := int64(t.Sub(TGE).Hours() / 24)
-	if daysSinceGenesis < 365 {
-		return publicAllocationCirculating(t) + ecosystemAllocationCirculating(t) + cumulativeInflation(daysSinceGenesis)
-	}
-	return publicAllocationCirculating(t) + ecosystemAllocationCirculating(t) + cumulativeInflation(daysSinceGenesis) + investorsCirculating(t) + coreContributorsCirculating(t)
+	return publicAllocationCirculating(t) +
+		ecosystemAllocationCirculating(t) +
+		cumulativeInflation(daysSinceGenesis) +
+		investorsCirculating(t) +
+		coreContributorsCirculating(t)
 }
 
 func publicAllocationCirculating(t time.Time) int64 {
