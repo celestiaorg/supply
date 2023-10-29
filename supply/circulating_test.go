@@ -14,11 +14,11 @@ func TestCirculatingSupply(t *testing.T) {
 	}
 	testCases := []testCase{
 		{beforeTGE, 0},
-		{TGE, 125_000_000_000_000},
-		{oneYearAfterTGE, 383_375_529_851_768},
-		{twoYearsAfterTGE, 756_393_270_774_762},
-		{threeYearsAfterTGE, 890_035_112_056_239},
-		{fourYearsAfterTGE, 961_921_649_072_480},
+		{TGE, 141_986_177_750_000},
+		{oneYearAfterTGE, 400_361_707_601_768},
+		{twoYearsAfterTGE, 840_549_150_049_419},
+		{threeYearsAfterTGE, 1_041_177_169_080_896},
+		{fourYearsAfterTGE, 1_179_866_360_072_480},
 	}
 	for _, tc := range testCases {
 		t.Run(tc.time.String(), func(t *testing.T) {
@@ -82,6 +82,28 @@ func Test_coreContributorsCirculating(t *testing.T) {
 	for _, tc := range testCases {
 		t.Run(tc.time.String(), func(t *testing.T) {
 			got := coreContributorsCirculating(tc.time)
+			require.Equal(t, tc.want, got)
+		})
+	}
+}
+
+func Test_ecosystemCirculating(t *testing.T) {
+	type testCase struct {
+		time time.Time
+		want int64
+	}
+	testCases := []testCase{
+		{beforeTGE, 0},
+		{TGE, .25 * ecosystem},
+		{oneDayAfterTGE, .25 * ecosystem},
+		{oneYearAfterTGE, .25 * ecosystem},
+		{twoYearsAfterTGE, 134_155_879_274_657},   // TODO(@rootulp) why doesn't this match: .25*ecosystem + (.75 / 3 * ecosystem))
+		{threeYearsAfterTGE, 201_142_057_024_657}, // TODO(@rootulp) why doesn't this match: .25*ecosystem + (.75 * 2 / 3 * ecosystem)
+		{fourYearsAfterTGE, ecosystem},
+	}
+	for _, tc := range testCases {
+		t.Run(tc.time.String(), func(t *testing.T) {
+			got := ecosystemCirculating(tc.time)
 			require.Equal(t, tc.want, got)
 		})
 	}

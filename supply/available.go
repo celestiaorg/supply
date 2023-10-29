@@ -20,18 +20,7 @@ func publicAllocationAvailable(t time.Time) int64 {
 }
 
 func ecosystemAvailable(t time.Time) int64 {
-	if t.Before(TGE) {
-		return 0
-	}
-	if t.Equal(fourYearsAfterTGE) || t.After(fourYearsAfterTGE) {
-		return ecosystem
-	}
-	days := daysSinceGenesis(t)
-	unlockedAtLaunch := ecosystem / 4
-	// 25% unlocked at launch. Remaining 75% unlocks continuously from year 1 to
-	// year 4.
-	return int64(unlockedAtLaunch) + days*ecosystem*3/4/(365*3)
-
+	return ecosystemCirculating(t)
 }
 
 func investorsAvailable(t time.Time) int64 {

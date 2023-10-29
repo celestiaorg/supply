@@ -29,9 +29,16 @@ func ecosystemCirculating(t time.Time) int64 {
 	if t.Before(TGE) {
 		return 0
 	}
-	// TODO(@rootulp): 1 billion total supply of TIA * .268 (total supply for ecosystem) * .25 (% of ecosystem unlocked at launch) = 67m
-	// so why does the spreadsheet say 50m?
-	return 50_000_000 * utiaPerTia
+	if t.Equal(oneYearAfterTGE) || t.Before(oneYearAfterTGE) {
+		return .25 * ecosystem
+	}
+	if t.Equal(fourYearsAfterTGE) || t.After(fourYearsAfterTGE) {
+		return ecosystem
+	}
+	days := daysSinceGenesis(t)
+	// 25% unlocked at launch. Remaining 75% unlocks continuously from year 1 to
+	// year 4.
+	return ecosystem/4 + (days-365)*ecosystem*3/4/(365*3)
 }
 
 func investorsCirculating(t time.Time) int64 {
