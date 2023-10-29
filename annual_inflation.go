@@ -9,8 +9,6 @@ const (
 	initialInflationRate = 0.08
 	// disinflationRate is the rate at which the inflation rate decreases each year.
 	disinflationRate = 0.1
-	// inflationRateDecay is the percent of the previous year's inflation that is retained.
-	inflationRateDecay = 1 - disinflationRate
 	// targetInflationRate is the inflation rate that the network aims to
 	// stabalize at. In practice, TargetInflationRate acts as a minimum so that
 	// the inflation rate doesn't decrease after reaching it.
@@ -21,7 +19,7 @@ func inflationRate(yearsSinceGenesis int64) float64 {
 	if yearsSinceGenesis == 0 {
 		return initialInflationRate
 	}
-	return max(inflationRate(yearsSinceGenesis-1)*inflationRateDecay, targetInflationRate)
+	return max(inflationRate(yearsSinceGenesis-1)*(1-disinflationRate), targetInflationRate)
 }
 
 func totalSupply(yearsSinceGenesis int64) int64 {
