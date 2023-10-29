@@ -14,11 +14,11 @@ const (
 const (
 	// publicAllocationGenesis is the number of tokens allocated to the public
 	// via genesis drop & incentivized testnet.
-	publicAllocationGenesis = 75_000_000 * utiaPerTia
+	publicAllocationGenesis = 74_057_350 * utiaPerTia
 
 	// publicAllocationFuture is the number of tokens allocated to the public
 	// to be deployed in future initiatives.
-	publicAllocationFuture = 125_000_000 * utiaPerTia
+	publicAllocationFuture = 125_942_650 * utiaPerTia
 
 	// publicAllocationTotal is the total number of tokens allocated to the
 	// public.

@@ -14,11 +14,11 @@ func TestCirculatingSupply(t *testing.T) {
 	}
 	testCases := []testCase{
 		{beforeTGE, 0},
-		{TGE, 141_986_177_750_000},
-		{oneYearAfterTGE, 400_361_707_601_768},
-		{twoYearsAfterTGE, 840_549_150_049_419},
-		{threeYearsAfterTGE, 1_041_177_169_080_896},
-		{fourYearsAfterTGE, 1_179_866_360_072_480},
+		{TGE, 141_043_527_750_000},
+		{oneYearAfterTGE, 399_419_057_601_768},
+		{twoYearsAfterTGE, 839_606_500_049_419},
+		{threeYearsAfterTGE, 1_040_234_519_080_896},
+		{fourYearsAfterTGE, 1_178_923_710_072_480},
 	}
 	for _, tc := range testCases {
 		t.Run(tc.time.String(), func(t *testing.T) {
@@ -35,8 +35,8 @@ func Test_publicAllocationCirculating(t *testing.T) {
 	}
 	testCases := []testCase{
 		{beforeTGE, 0},
-		{TGE, 75_000_000_000_000},
-		{oneYearAfterTGE, 75_000_000_000_000},
+		{TGE, publicAllocationGenesis},
+		{oneYearAfterTGE, publicAllocationGenesis},
 	}
 	for _, tc := range testCases {
 		t.Run(tc.time.String(), func(t *testing.T) {
