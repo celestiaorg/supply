@@ -18,14 +18,10 @@ var threeYearsAfterTGE = TGE.AddDate(3, 0, 0)
 
 // circulatingSupply returns the circulating supply of utia at the given time.
 func circulatingSupply(t time.Time) int64 {
-	if t.Before(TGE) {
-		return 0
-	}
-
 	days := daysSinceGenesis(t)
-	return publicAllocationCirculating(t) +
+	return cumulativeInflation(days) +
+		publicAllocationCirculating(t) +
 		ecosystemAllocationCirculating(t) +
-		cumulativeInflation(days) +
 		investorsCirculating(t) +
 		coreContributorsCirculating(t)
 }
