@@ -4,10 +4,27 @@ import (
 	"time"
 )
 
+// The following constants are sourced from
+// https://docs.celestia.org/learn/staking-governance-supply#tia-allocation-at-genesis
 const (
-	publicAllocation      = 75_000_000 * utiaPerTia // depends on governance
-	ecosystemAllocation   = 50_000_000 * utiaPerTia
-	investorsTotal        = 355_689_414 * utiaPerTia
+	// publicAllocationGenesis is the number of tokens allocated to the public
+	// via genesis drop & incentivized testnet.
+	publicAllocationGenesis = 75_000_000 * utiaPerTia
+
+	// publicAllocationFuture is the number of tokens allocated to the public
+	// to be deployed in future initiatives.
+	publicAllocationFuture = 125_000_000 * utiaPerTia
+
+	// ecosystem is the number of tokens allocated to the ecosystem at genesis.
+	ecosystem = 268_000_000 * utiaPerTia
+
+	// investorsTotal is the total number of tokens allocated to investors at
+	// genesis. This includes investors in the seed, series A, and series B
+	// rounds.
+	investorsTotal = 355_689_414 * utiaPerTia
+
+	// coreContributorsTotal is the total number of tokens allocated to core
+	// contributors at genesis.
 	coreContributorsTotal = 176_365_875 * utiaPerTia
 )
 
@@ -21,23 +38,32 @@ func circulatingSupply(t time.Time) int64 {
 	days := daysSinceGenesis(t)
 	return cumulativeInflation(days) +
 		publicAllocationCirculating(t) +
-		ecosystemAllocationCirculating(t) +
+		ecosystemCirculating(t) +
 		investorsCirculating(t) +
 		coreContributorsCirculating(t)
 }
 
+// publicAllocationCirculating returns the circulating supply of utia at the
+// given time. The public allocation genesis is fully unlocked at TGE. The
+// public allocation for future iniatives is subject to on chain governance.
 func publicAllocationCirculating(t time.Time) int64 {
 	if t.Before(TGE) {
 		return 0
 	}
-	return publicAllocation
+	// TODO: account for publicAllocationFuture when on-chain governance votes to spend it.
+	return publicAllocationGenesis
 }
 
-func ecosystemAllocationCirculating(t time.Time) int64 {
+// ecosystemCirculating returns the circulating supply of utia in the ecosystem category at the given time.
+// 25% unlocked at launch. Remaining 75% unlocks continuously from year 1 to year 4.
+func ecosystemCirculating(t time.Time) int64 {
 	if t.Before(TGE) {
 		return 0
 	}
-	return ecosystemAllocation
+	// TODO(@rootulp): 1 billion total supply of TIA * .268 (total supply for ecosystem) * .25 (% of ecosystem unlocked at launch) = 67m
+	// so why does the spreadsheet say 50m?
+	return 50_000_000 * utiaPerTia
+	// TODO(@rootulp): why does the spreadsheet not account for ecosystem unlock schedule?
 }
 
 func investorsCirculating(t time.Time) int64 {
