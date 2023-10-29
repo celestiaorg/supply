@@ -15,8 +15,12 @@ const (
 	// to be deployed in future initiatives.
 	publicAllocationFuture = 125_000_000 * utiaPerTia
 
+	// publicAllocationTotal is the total number of tokens allocated to the
+	// public.
+	publicAllocationTotal = publicAllocationGenesis + publicAllocationFuture
+
 	// ecosystem is the number of tokens allocated to the ecosystem at genesis.
-	ecosystem = 268_000_000 * utiaPerTia
+	ecosystem = 267_944_711 * utiaPerTia
 
 	// investorsTotal is the total number of tokens allocated to investors at
 	// genesis. This includes investors in the seed, series A, and series B
@@ -32,6 +36,7 @@ var TGE = time.Date(2023, time.October, 31, 14, 0, 0, 0, time.UTC)
 var oneYearAfterTGE = TGE.AddDate(1, 0, 0)
 var twoYearsAfterTGE = TGE.AddDate(2, 0, 0)
 var threeYearsAfterTGE = TGE.AddDate(3, 0, 0)
+var fourYearsAfterTGE = TGE.AddDate(4, 0, 0)
 
 // circulatingSupply returns the circulating supply of utia at the given time.
 func circulatingSupply(t time.Time) int64 {
@@ -63,7 +68,6 @@ func ecosystemCirculating(t time.Time) int64 {
 	// TODO(@rootulp): 1 billion total supply of TIA * .268 (total supply for ecosystem) * .25 (% of ecosystem unlocked at launch) = 67m
 	// so why does the spreadsheet say 50m?
 	return 50_000_000 * utiaPerTia
-	// TODO(@rootulp): why does the spreadsheet not account for ecosystem unlock schedule?
 }
 
 // investorsCirculating returns the circulating supply of utia in the investors
