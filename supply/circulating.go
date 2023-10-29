@@ -4,8 +4,8 @@ import (
 	"time"
 )
 
-// circulatingSupply returns the circulating supply of utia at the given time.
-func circulatingSupply(t time.Time) int64 {
+// CirculatingSupply returns the circulating supply of utia at the given time.
+func CirculatingSupply(t time.Time) int64 {
 	days := daysSinceGenesis(t)
 	return cumulativeInflation(days) +
 		publicAllocationCirculating(t) +

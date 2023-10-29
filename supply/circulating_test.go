@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func Test_circulatingSupply(t *testing.T) {
+func TestCirculatingSupply(t *testing.T) {
 	type testCase struct {
 		time time.Time
 		want int64
@@ -22,7 +22,7 @@ func Test_circulatingSupply(t *testing.T) {
 	}
 	for _, tc := range testCases {
 		t.Run(tc.time.String(), func(t *testing.T) {
-			got := circulatingSupply(tc.time)
+			got := CirculatingSupply(tc.time)
 			require.Equal(t, tc.want, got)
 		})
 	}
