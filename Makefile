@@ -9,3 +9,9 @@ test:
 	@echo "--> Running tests"
 	@go test -timeout 5m ./...
 .PHONY: test
+
+## lint: Run golangci-lint
+lint:
+	@echo "--> Running golangci-lint"
+	@golangci-lint run
+.PHONY: lint
