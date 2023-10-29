@@ -1,10 +1,6 @@
 package supply
 
 const (
-	utiaPerTia               = 1_000_000                       // 1 tia = 1 million utia
-	initialTotalSupply       = 1_000_000_000                   // 1 billion tia
-	initialTotalSupplyInUtia = initialTotalSupply * utiaPerTia // 1 quadrillion utia
-
 	// initialInflationRate is the inflation rate that the network starts at.
 	initialInflationRate = 0.08
 	// disinflationRate is the rate at which the inflation rate decreases each year.
