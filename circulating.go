@@ -6,6 +6,7 @@ import (
 
 // The following constants are sourced from
 // https://docs.celestia.org/learn/staking-governance-supply#tia-allocation-at-genesis
+// https://docs.google.com/spreadsheets/d/1OoHEIF0oLSFcqywQIn8Vf6T6VHkza5E1bIag-zVWhiA
 const (
 	// publicAllocationGenesis is the number of tokens allocated to the public
 	// via genesis drop & incentivized testnet.
@@ -19,7 +20,8 @@ const (
 	// public.
 	publicAllocationTotal = publicAllocationGenesis + publicAllocationFuture
 
-	// ecosystem is the number of tokens allocated to the ecosystem at genesis.
+	// ecosystem is the number of tokens allocated to R&D and the ecosystem at
+	// genesis.
 	ecosystem = 267_944_711 * utiaPerTia
 
 	// investorsTotal is the total number of tokens allocated to investors at
@@ -31,12 +33,6 @@ const (
 	// contributors at genesis.
 	coreContributorsTotal = 176_365_875 * utiaPerTia
 )
-
-var TGE = time.Date(2023, time.October, 31, 14, 0, 0, 0, time.UTC)
-var oneYearAfterTGE = TGE.AddDate(1, 0, 0)
-var twoYearsAfterTGE = TGE.AddDate(2, 0, 0)
-var threeYearsAfterTGE = TGE.AddDate(3, 0, 0)
-var fourYearsAfterTGE = TGE.AddDate(4, 0, 0)
 
 // circulatingSupply returns the circulating supply of utia at the given time.
 func circulatingSupply(t time.Time) int64 {
