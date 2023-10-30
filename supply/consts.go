@@ -1,6 +1,8 @@
 package supply
 
-import "time"
+import (
+	"time"
+)
 
 const (
 	utiaPerTia               = 1_000_000                       // 1 tia = 1 million utia
