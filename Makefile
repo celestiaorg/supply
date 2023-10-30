@@ -15,3 +15,8 @@ lint:
 	@echo "--> Running golangci-lint"
 	@golangci-lint run
 .PHONY: lint
+
+## build: Build the supply-server binary.
+build:
+	@echo "--> Building the binary and saving in bin/supply-server"
+	@go build -o bin/supply-server
