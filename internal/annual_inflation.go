@@ -1,4 +1,4 @@
-package supply
+package internal
 
 const (
 	// initialInflationRate is the inflation rate that the network starts at.

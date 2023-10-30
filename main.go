@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/celestiaorg/supply/supply"
+	"github.com/celestiaorg/supply/internal"
 	"github.com/gin-gonic/gin"
 )
 
@@ -19,8 +19,8 @@ type response struct {
 func getSupply(c *gin.Context) {
 	t := time.Now()
 	c.IndentedJSON(http.StatusOK, response{
-		Available:   supply.AvailableSupply(t),
-		Circulating: supply.CirculatingSupply(t),
+		Available:   internal.AvailableSupply(t),
+		Circulating: internal.CirculatingSupply(t),
 	})
 }
 
@@ -35,8 +35,8 @@ func getSupplyByDate(c *gin.Context) {
 		return
 	}
 	c.IndentedJSON(http.StatusOK, response{
-		Available:   supply.AvailableSupply(t),
-		Circulating: supply.CirculatingSupply(t),
+		Available:   internal.AvailableSupply(t),
+		Circulating: internal.CirculatingSupply(t),
 	})
 }
 

@@ -1,4 +1,4 @@
-package supply
+package internal
 
 // cumulativeInflation returns the total amount of utia that will be minted due to inflation.
 func cumulativeInflation(daysSinceGenesis int64) int64 {

@@ -1,4 +1,4 @@
-package supply
+package internal
 
 import (
 	"testing"
