@@ -20,8 +20,6 @@ Supply contains utilities for calculating the total available and circulating su
     curl http://localhost:8080/supply/2024-10-31
     ```
 
-This API server is also temporarily deployed to a Digital Ocean host: [http://198.199.82.108:8080/supply/2024-01-01](http://198.199.82.108:8080/supply/2024-01-01)
-
 ## Contributing
 
 ### Helpful commands
