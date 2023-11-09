@@ -55,9 +55,10 @@ func Test_investorsCirculating(t *testing.T) {
 		{beforeTGE, 0},
 		{TGE, 0},
 		{oneDayAfterTGE, 0},
-		{oneYearAfterTGE, 119_212_799_030_136}, // one year after TGE 1/3 of total unlocks
-		{twoYearsAfterTGE, investorsTotal},     // two years after TGE total finishes unlock
+		{oneYearAfterTGE, 119_212_799_030_136},
+		{twoYearsAfterTGE, investorsTotal},
 		{threeYearsAfterTGE, investorsTotal},
+		{fourYearsAfterTGE, investorsTotal},
 	}
 	for _, tc := range testCases {
 		t.Run(tc.time.String(), func(t *testing.T) {
@@ -78,7 +79,8 @@ func Test_coreContributorsCirculating(t *testing.T) {
 		{oneDayAfterTGE, 0},
 		{oneYearAfterTGE, 58_949_689_726_027},
 		{twoYearsAfterTGE, 117_738_314_725_882},
-		{threeYearsAfterTGE, coreContributors}, // three years after TGE total finishes unlock
+		{threeYearsAfterTGE, coreContributors},
+		{fourYearsAfterTGE, coreContributors},
 	}
 	for _, tc := range testCases {
 		t.Run(tc.time.String(), func(t *testing.T) {

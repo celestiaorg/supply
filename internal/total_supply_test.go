@@ -12,7 +12,6 @@ func TestTotalSupply(t *testing.T) {
 		time time.Time
 		want int64
 	}
-
 	testCases := []testCase{
 		{beforeTGE, 0},
 		{TGE, initialTotalSupplyInUtia},
@@ -22,7 +21,6 @@ func TestTotalSupply(t *testing.T) {
 		{threeYearsAfterTGE, 1232979823056239},
 		{fourYearsAfterTGE, 1304866360072480},
 	}
-
 	for _, tc := range testCases {
 		got := TotalSupply(tc.time)
 		assert.Equal(t, tc.want, got)
