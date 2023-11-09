@@ -9,17 +9,17 @@ import (
 )
 
 const utiaPerTia = 100_000
+const apiVersion = "v0"
 
-func getCirculating(c *gin.Context) {
+func getCirculatingSupply(c *gin.Context) {
 	t := time.Now()
-	circulating := internal.CirculatingSupply(t)
-	c.String(200, formatTia(circulating))
+	cs := internal.CirculatingSupply(t)
+	c.String(200, formatTia(cs))
 }
 
 func main() {
 	router := gin.Default()
-	router.GET("/supply/circulating", getCirculating)
-	// router.GET("/supply/total", getTotal)
+	router.GET(fmt.Sprintf("/%s/circulating-supply", apiVersion), getCirculatingSupply)
 	err := router.Run("0.0.0.0:8080")
 	if err != nil {
 		panic(err)
