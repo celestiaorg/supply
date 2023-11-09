@@ -15,14 +15,6 @@ const (
 	// via genesis drop & incentivized testnet.
 	publicAllocationGenesis = 74_057_350 * utiaPerTia
 
-	// publicAllocationFuture is the number of tokens allocated to the public
-	// to be deployed in future initiatives.
-	publicAllocationFuture = 125_942_650 * utiaPerTia
-
-	// publicAllocationTotal is the total number of tokens allocated to the
-	// public.
-	publicAllocationTotal = publicAllocationGenesis + publicAllocationFuture
-
 	// ecosystem is the number of tokens allocated to R&D and the ecosystem at
 	// genesis.
 	ecosystem = 267_944_711 * utiaPerTia
