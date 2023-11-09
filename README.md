@@ -31,3 +31,6 @@ Supply contains utilities for calculating the total available and circulating su
 # Get more info on available make commands.
 make help
 ```
+
+> [!NOTE]
+> Functions should ideally operate on utia values (of type `int64`) rather than TIA values (of type `float`) to avoid loss of precsision. Utia values can be converted to TIA prior to responding to API requests.
