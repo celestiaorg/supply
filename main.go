@@ -1,14 +1,12 @@
 package main
 
 import (
-	"fmt"
 	"time"
 
 	"github.com/celestiaorg/supply/internal"
 	"github.com/gin-gonic/gin"
 )
 
-const utiaPerTia = 100_000
 const landingPage = `
 Available routes are:
 /v0/circulating-supply
@@ -24,13 +22,13 @@ func getLandingPage(c *gin.Context) {
 func getCirculatingSupply(c *gin.Context) {
 	t := time.Now()
 	cs := internal.CirculatingSupply(t)
-	c.String(200, formatTia(cs))
+	c.String(200, internal.FormatTia(cs))
 }
 
 func getTotalSupply(c *gin.Context) {
 	t := time.Now()
 	cs := internal.TotalSupply(t)
-	c.String(200, formatTia(cs))
+	c.String(200, internal.FormatTia(cs))
 }
 
 func main() {
@@ -42,9 +40,4 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-}
-
-func formatTia(utia int64) string {
-	tia := float64(utia) / utiaPerTia
-	return fmt.Sprintf("%f", tia)
 }

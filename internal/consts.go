@@ -1,13 +1,10 @@
 package internal
 
-import (
-	"time"
-)
-
 const (
-	utiaPerTia               = 1_000_000                       // 1 tia = 1 million utia
-	initialTotalSupply       = 1_000_000_000                   // 1 billion tia
-	initialTotalSupplyInUtia = initialTotalSupply * utiaPerTia // 1 quadrillion utia
+	// Sourced from
+	// https://github.com/celestiaorg/networks/blob/master/celestia/genesis.json
+	initialTotalSupplyInTia  = 1_000_000_000                        // 1 billion tia
+	initialTotalSupplyInUtia = initialTotalSupplyInTia * utiaPerTia // 1 quadrillion utia
 )
 
 // The following constants are sourced from
@@ -38,14 +35,4 @@ const (
 	// coreContributorsTotal is the total number of tokens allocated to core
 	// contributors at genesis.
 	coreContributorsTotal = 176_365_875 * utiaPerTia
-)
-
-var (
-	beforeTGE          = time.Date(2023, time.October, 31, 13, 0, 0, 0, time.UTC)
-	TGE                = time.Date(2023, time.October, 31, 14, 0, 0, 0, time.UTC)
-	oneDayAfterTGE     = TGE.AddDate(0, 0, 1)
-	oneYearAfterTGE    = TGE.AddDate(1, 0, 0)
-	twoYearsAfterTGE   = TGE.AddDate(2, 0, 0)
-	threeYearsAfterTGE = TGE.AddDate(3, 0, 0)
-	fourYearsAfterTGE  = TGE.AddDate(4, 0, 0)
 )
