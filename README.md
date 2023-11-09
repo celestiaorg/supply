@@ -1,6 +1,9 @@
 # Supply
 
-Supply contains utilities for calculating the total available and circulating supply of utia on a given date.
+This repo contains:
+
+1. Utilities for calculating the circulating and total supply of utia on a given date.
+1. An API with endpoints that return the current circulating and total supply.
 
 ## Usage
 
