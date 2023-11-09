@@ -98,8 +98,8 @@ func Test_ecosystemCirculating(t *testing.T) {
 		{TGE, .25 * ecosystem},
 		{oneDayAfterTGE, .25 * ecosystem},
 		{oneYearAfterTGE, .25 * ecosystem},
-		{twoYearsAfterTGE, 134_155_879_274_657},   // TODO(@rootulp) why doesn't this match: .25*ecosystem + (.75 / 3 * ecosystem))
-		{threeYearsAfterTGE, 201_142_057_024_657}, // TODO(@rootulp) why doesn't this match: .25*ecosystem + (.75 * 2 / 3 * ecosystem)
+		{twoYearsAfterTGE, 134_155_879_274_657},
+		{threeYearsAfterTGE, 201_142_057_024_657},
 		{fourYearsAfterTGE, ecosystem},
 	}
 	for _, tc := range testCases {
