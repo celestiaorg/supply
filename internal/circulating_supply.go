@@ -21,7 +21,7 @@ func publicAllocationCirculating(t time.Time) int64 {
 	if t.Before(TGE) {
 		return 0
 	}
-	// TODO: account for publicAllocationFuture when on-chain governance votes to spend it.
+	// Note: account for publicAllocationFuture when on-chain governance votes to spend it.
 	return publicAllocationGenesis
 }
 
@@ -48,8 +48,8 @@ func investorsCirculating(t time.Time) int64 {
 	if t.Equal(twoYearsAfterTGE) || t.After(twoYearsAfterTGE) {
 		return investorsTotal
 	}
-	// 1/3 of investor tokens unlocks in a chunk at TGE + 1 year. The remaining
-	// 2/3 of investor tokens unlocks linearly from TGE + 1 year to TGE + 2
+	// 33.3% of investor tokens unlocks in a chunk at TGE + 1 year. The remaining
+	// 66.6% of investor tokens unlocks linearly from TGE + 1 year to TGE + 2
 	// years.
 	days := daysSinceGenesis(t)
 	return investorsTotal/3 + investorsTotal*2/3/365*(days-365)
@@ -62,8 +62,8 @@ func coreContributorsCirculating(t time.Time) int64 {
 	if t.Equal(threeYearsAfterTGE) || t.After(threeYearsAfterTGE) {
 		return coreContributors
 	}
-	// 1/3 of core contributor tokens unlocks in a chunk at TGE + 1 year. The
-	// remaining 2/3 of tokens unlocks linearly from TGE + 1 year to TGE + 3
+	// 33.3% of core contributor tokens unlocks in a chunk at TGE + 1 year. The
+	// remaining 66.6% of tokens unlocks linearly from TGE + 1 year to TGE + 3
 	// years.
 	days := daysSinceGenesis(t)
 	return coreContributors/3 + coreContributors*2/3/(365*2)*(days-365)
