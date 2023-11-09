@@ -78,7 +78,7 @@ func Test_coreContributorsCirculating(t *testing.T) {
 		{oneDayAfterTGE, 0},
 		{oneYearAfterTGE, 58_949_689_726_027},
 		{twoYearsAfterTGE, 117_738_314_725_882},
-		{threeYearsAfterTGE, coreContributorsTotal}, // three years after TGE total finishes unlock
+		{threeYearsAfterTGE, coreContributors}, // three years after TGE total finishes unlock
 	}
 	for _, tc := range testCases {
 		t.Run(tc.time.String(), func(t *testing.T) {

@@ -60,13 +60,13 @@ func coreContributorsCirculating(t time.Time) int64 {
 		return 0
 	}
 	if t.Equal(threeYearsAfterTGE) || t.After(threeYearsAfterTGE) {
-		return coreContributorsTotal
+		return coreContributors
 	}
 	// 1/3 of core contributor tokens unlocks in a chunk at TGE + 1 year. The
 	// remaining 2/3 of tokens unlocks linearly from TGE + 1 year to TGE + 3
 	// years.
 	days := daysSinceGenesis(t)
-	return coreContributorsTotal/3 + coreContributorsTotal*2/3/(365*2)*(days-365)
+	return coreContributors/3 + coreContributors*2/3/(365*2)*(days-365)
 }
 
 func daysSinceGenesis(t time.Time) int64 {

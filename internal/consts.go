@@ -32,7 +32,7 @@ const (
 	// rounds.
 	investorsTotal = 355_689_414 * utiaPerTia
 
-	// coreContributorsTotal is the total number of tokens allocated to core
-	// contributors at genesis.
-	coreContributorsTotal = 176_365_875 * utiaPerTia
+	// coreContributors is the number of tokens allocated to core contributors
+	// at genesis.
+	coreContributors = 176_365_875 * utiaPerTia
 )
