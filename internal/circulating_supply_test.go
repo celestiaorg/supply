@@ -13,7 +13,7 @@ func TestCirculatingSupply(t *testing.T) {
 		want int64
 	}
 	testCases := []testCase{
-		{beforeTGE, 0},
+		{oneHourBeforeTGE, 0},
 		{TGE, 141_043_527_750_000},
 		{oneYearAfterTGE, 399_419_057_601_768},
 		{twoYearsAfterTGE, 839_606_500_049_419},
@@ -34,7 +34,7 @@ func Test_publicAllocationCirculating(t *testing.T) {
 		want int64
 	}
 	testCases := []testCase{
-		{beforeTGE, 0},
+		{oneHourBeforeTGE, 0},
 		{TGE, publicAllocationGenesis},
 		{oneYearAfterTGE, publicAllocationGenesis},
 	}
@@ -52,7 +52,7 @@ func Test_investorsCirculating(t *testing.T) {
 		want int64
 	}
 	testCases := []testCase{
-		{beforeTGE, 0},
+		{oneHourBeforeTGE, 0},
 		{TGE, 0},
 		{oneDayAfterTGE, 0},
 		{oneYearAfterTGE, 119_212_799_030_136},
@@ -74,7 +74,7 @@ func Test_coreContributorsCirculating(t *testing.T) {
 		want int64
 	}
 	testCases := []testCase{
-		{beforeTGE, 0},
+		{oneHourBeforeTGE, 0},
 		{TGE, 0},
 		{oneDayAfterTGE, 0},
 		{oneYearAfterTGE, 58_949_689_726_027},
@@ -96,7 +96,7 @@ func Test_ecosystemCirculating(t *testing.T) {
 		want int64
 	}
 	testCases := []testCase{
-		{beforeTGE, 0},
+		{oneHourBeforeTGE, 0},
 		{TGE, .25 * ecosystem},
 		{oneDayAfterTGE, .25 * ecosystem},
 		{oneYearAfterTGE, .25 * ecosystem},

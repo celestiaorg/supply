@@ -13,7 +13,7 @@ func TestTotalSupply(t *testing.T) {
 		want int64
 	}
 	testCases := []testCase{
-		{beforeTGE, 0},
+		{oneHourBeforeTGE, 0},
 		{TGE, initialTotalSupplyInUtia},
 		{oneDayAfterTGE, 1000219178082191},
 		{oneYearAfterTGE, 1080213041095605},
