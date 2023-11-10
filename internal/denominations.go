@@ -1,25 +1,20 @@
 package internal
 
 import (
-	"math/big"
+	"fmt"
 )
 
 const (
-	utiaPerTia = 1_000_000 // 1 tia = 1 million utia
+	// utiaPerTia is the number of utia in one TIA. One tia = one million utia.
+	utiaPerTia = 1_000_000
+	// precision is the number of decimal places to show for display values of
+	// TIA. This level of precision ensures that the smallest unit of TIA (one
+	// utia) is always visible when displaying values as TIA.
+	precision = 6
 )
 
 // FormatTia converts utia to TIA
 func FormatTia(utia int64) string {
-	x := newBigFloat(utia)
-	y := newBigFloat(utiaPerTia)
-	tia := new(big.Float)
-	tia.Quo(x, y)
-	tiaString := new(big.Float).SetPrec(7).SetMode(big.ToZero).Set(tia).Text('f', -1)
-	return tiaString
-}
-
-func newBigFloat(x int64) *big.Float {
-	bigFloat := new(big.Float)
-	bigFloat.SetInt64(x)
-	return bigFloat
+	result := float64(utia) / float64(utiaPerTia)
+	return fmt.Sprintf("%.*f", precision, result)
 }
