@@ -1,4 +1,3 @@
-# Stage 1: Build the binary
 FROM --platform=linux/amd64 docker.io/golang:1.21-alpine3.18 AS builder
 
 ENV CGO_ENABLED=0
@@ -7,6 +6,7 @@ ENV GO111MODULE=on
 ADD . /app
 WORKDIR /app
 
+# Stage 1: Build the binary
 RUN GOOS=linux GOARCH=amd64 go build -o main .
 
 # Stage 2: Create the runtime image
