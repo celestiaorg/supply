@@ -14,7 +14,7 @@ FROM docker.io/alpine:3.18.4
 
 RUN apk update && apk add --no-cache bash curl jq
 COPY --from=builder /app/main .
-# Command to run the executable
 
 EXPOSE 8080
+# Command to run the executable
 CMD ["./main"]
