@@ -25,3 +25,13 @@ build:
 docker-build:
 	@echo "--> Building the docker image"
 	@docker build . --tag "celestiaorg/supply:latest"
+
+## docker-tag: Tags the docker image so that it can be pushed to Scaleway.
+docker-tag:
+	@echo "--> Tagging the docker image so that it can be pushed to Scaleway"
+	@docker tag celestiaorg/supply rg.fr-par.scw.cloud/supply/supply:latest
+
+## docker-push: Pushes the docker image to Scaleway.
+docker-push:
+	@echo "--> Pushing the docker image"
+	@docker push rg.fr-par.scw.cloud/supply/supply:latest
