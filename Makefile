@@ -20,3 +20,8 @@ lint:
 build:
 	@echo "--> Building the binary and saving in bin/supply-server"
 	@go build -o bin/supply-server
+
+## docker-build: Build a docker image. Requires docker to be installed.
+docker-build:
+	@echo "--> Building the docker image"
+	@docker build . --tag "celestiaorg/supply:latest"
