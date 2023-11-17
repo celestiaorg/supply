@@ -20,18 +20,22 @@ lint:
 build:
 	@echo "--> Building the binary and saving in bin/supply-server"
 	@go build -o bin/supply-server
+.PHONY: build
 
 ## docker-build: Build a docker image. Requires docker to be installed.
 docker-build:
 	@echo "--> Building the docker image"
 	@docker build . --tag "celestiaorg/supply:latest"
+.PHONY: docker-build
 
-## docker-tag: Tags the docker image so that it can be pushed to Scaleway.
+## docker-tag: Tag the docker image so that it can be pushed to Scaleway.
 docker-tag:
 	@echo "--> Tagging the docker image so that it can be pushed to Scaleway"
 	@docker tag celestiaorg/supply rg.fr-par.scw.cloud/supply/supply:latest
+.PHONY: docker-tag
 
-## docker-push: Pushes the docker image to Scaleway.
+## docker-push: Push the docker image to Scaleway. Requires the user to be logged in to Scaleway.
 docker-push:
-	@echo "--> Pushing the docker image"
+	@echo "--> Pushing the docker image to Scaleway"
 	@docker push rg.fr-par.scw.cloud/supply/supply:latest
+.PHONY: docker-push
