@@ -36,4 +36,8 @@ make help
 ```
 
 > [!NOTE]
-> Functions should ideally operate on utia values (of type `int64`) rather than TIA values (of type `float`) to avoid loss of precsision. Utia values can be converted to TIA prior to responding to API requests.
+> Functions should ideally operate on utia values (of type `int64`) rather than TIA values (of type `float64`) to avoid loss of precsision. Utia values can be converted to TIA values (of type `float64`) prior to responding to API requests.
+
+## Deployment
+
+The [docker.yml](./.github/workflows/docker.yml) workflow builds a Docker image and pushes it to a Scaleway container registry. The supply server is deployed via a Scaleway serverless container. CI will not automatically deploy the latest Docker image to the serverless container so you must do that manually if you want to deploy a new version of the supply server.
