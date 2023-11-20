@@ -8,11 +8,10 @@ import (
 )
 
 const landingPage = `
-Available routes are:
+The API routes listed below return values in TIA:
+
 /v0/circulating-supply
 /v0/total-supply
-
-Note: all routes return values in TIA.
 `
 
 func getLandingPage(c *gin.Context) {
