@@ -1,20 +1,23 @@
 package main
 
 import (
-	"net/http"
 	"time"
 
 	"github.com/celestiaorg/supply/internal"
 	"github.com/gin-gonic/gin"
 )
 
-const (
-	// RouteCirculatingSupply is the route for circulating supply.
-	RouteCirculatingSupply = "/v0/circulating-supply"
+const landingPage = `
+Available routes are:
+/v0/circulating-supply
+/v0/total-supply
 
-	// RouteTotalSupply is the route for total supply.
-	RouteTotalSupply = "/v0/total-supply"
-)
+Note: all routes return values in TIA.
+`
+
+func getLandingPage(c *gin.Context) {
+	c.String(200, landingPage)
+}
 
 func getCirculatingSupply(c *gin.Context) {
 	t := time.Now()
@@ -30,15 +33,9 @@ func getTotalSupply(c *gin.Context) {
 
 func main() {
 	router := gin.Default()
-	router.LoadHTMLGlob("templates/*")
-	router.GET("/", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "index.tmpl", gin.H{
-			"RouteCirculatingSupply": RouteCirculatingSupply,
-			"RouteTotalSupply":       RouteTotalSupply,
-		})
-	})
-	router.GET(RouteCirculatingSupply, getCirculatingSupply)
-	router.GET(RouteTotalSupply, getTotalSupply)
+	router.GET("/", getLandingPage)
+	router.GET("/v0/circulating-supply", getCirculatingSupply)
+	router.GET("/v0/total-supply", getTotalSupply)
 	err := router.Run("0.0.0.0:8080")
 	if err != nil {
 		panic(err)
