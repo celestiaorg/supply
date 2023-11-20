@@ -1,7 +1,10 @@
 package main
 
 import (
+	"html/template"
+	"io"
 	"net/http"
+	"strings"
 	"time"
 
 	"github.com/celestiaorg/supply/internal"
@@ -30,17 +33,40 @@ func getTotalSupply(c *gin.Context) {
 
 func main() {
 	router := gin.Default()
-	router.LoadHTMLGlob("templates/*")
+	t, err := loadTemplate()
+	if err != nil {
+		panic(err)
+	}
+	router.SetHTMLTemplate(t)
 	router.GET("/", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "index.tmpl", gin.H{
+		c.HTML(http.StatusOK, "/html/index.tmpl", gin.H{
 			"RouteCirculatingSupply": RouteCirculatingSupply,
 			"RouteTotalSupply":       RouteTotalSupply,
 		})
 	})
 	router.GET(RouteCirculatingSupply, getCirculatingSupply)
 	router.GET(RouteTotalSupply, getTotalSupply)
-	err := router.Run("0.0.0.0:8080")
+	err = router.Run("0.0.0.0:8080")
 	if err != nil {
 		panic(err)
 	}
+}
+
+// loadTemplate loads templates embedded by go-assets-builder
+func loadTemplate() (*template.Template, error) {
+	t := template.New("")
+	for name, file := range Assets.Files {
+		if file.IsDir() || !strings.HasSuffix(name, ".tmpl") {
+			continue
+		}
+		h, err := io.ReadAll(file)
+		if err != nil {
+			return nil, err
+		}
+		t, err = t.New(name).Parse(string(h))
+		if err != nil {
+			return nil, err
+		}
+	}
+	return t, nil
 }

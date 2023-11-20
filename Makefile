@@ -18,6 +18,8 @@ lint:
 
 ## build: Build the supply-server binary.
 build:
+	@echo "--> Generating assets.go based on the html directory"
+	@go-assets-builder html -o assets.go
 	@echo "--> Building the binary and saving in bin/supply-server"
 	@go build -o bin/supply-server
 .PHONY: build
