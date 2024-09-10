@@ -15,7 +15,7 @@ func TestCirculatingSupply(t *testing.T) {
 	testCases := []testCase{
 		{oneHourBeforeTGE, 0},
 		{TGE, 141_043_527_750_000},
-		{oneYearAfterTGE, 399_419_057_601_768},
+		{oneYearAfterTGE, 398_395_290_749_715},
 		{twoYearsAfterTGE, 839_606_500_049_419},
 		{threeYearsAfterTGE, 1_040_234_519_080_896},
 		{fourYearsAfterTGE, 1_178_923_710_072_480},
@@ -55,7 +55,8 @@ func Test_investorsCirculating(t *testing.T) {
 		{oneHourBeforeTGE, 0},
 		{TGE, 0},
 		{oneDayAfterTGE, 0},
-		{oneYearAfterTGE, 119_212_799_030_136},
+		{oneYearAfterTGEMinusOneDay, 0},       // one day before tokens unlock.
+		{oneYearAfterTGE, investorsTotal / 3}, // tokens unlock on October 30th, 2024.
 		{twoYearsAfterTGE, investorsTotal},
 		{threeYearsAfterTGE, investorsTotal},
 		{fourYearsAfterTGE, investorsTotal},
@@ -77,7 +78,8 @@ func Test_coreContributorsCirculating(t *testing.T) {
 		{oneHourBeforeTGE, 0},
 		{TGE, 0},
 		{oneDayAfterTGE, 0},
-		{oneYearAfterTGE, 58_949_689_726_027},
+		{oneYearAfterTGEMinusOneDay, 0},         // one day before tokens unlock.
+		{oneYearAfterTGE, coreContributors / 3}, // tokens unlock on October 30th, 2024.
 		{twoYearsAfterTGE, 117_738_314_725_882},
 		{threeYearsAfterTGE, coreContributors},
 		{fourYearsAfterTGE, coreContributors},
