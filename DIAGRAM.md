@@ -1,3 +1,49 @@
-# Architecture Diagram
+# Dataflow
 
-[![](https://mermaid.ink/img/pako:eNqtmN1v2zYQwP8VQn3IGthBYqeuowEDuiTN8hCsaIIB27wHSqJsNpQokFRS9-N_3x0pUZ9OnbZ5iqjj8X53x7uTPwexTFgQBmtFiw25-32VE_jTZeQWVsGdNFSQ27IoxJacUxGXghou81XgRK242QpGrGQlmHIhwhfLZXycHE_gvZL3LHwxY_PTU_88feSJ2YSz4mOjqaXjl39XweFhe8G8PDwkX7wRTBOzYcRYA7U7V6bwfM9yTaghNN-SNX9gOTE8A8EJ4XksyoTnaxJJs4FHbnizmeaJ350kDB42SpZrlEsd9NEq-O9lGIZpmcfWCd7w6fS3L6vgOi9KE5ILutVEw2GMXLGcaa5XwRcSl5n13QO7rvU5xrEXCahwuG_i6j3yWlZvDkmVzAiIkmN4Zb0Rl0qx3ODihBRKPnCLS4nOaaE30jgXoZoKdQ0WKtCekGi7D2k7zB3qO-tkJEXjbxG_oneYg9U6njJ_YMq4aHLU5eJ1YA7gEbmsubidMAEUYKpz7topmpBYQSBjEEqlws2API0oCsZNxuqaKaGGNjwj3h-J5pScODIutl7urVTwsqYbedNE8YIZpsAuG8Qn_G4JmsS1YWRaQ0h5heeJIKz9fFAM4q9hp9juDuCYpV3ivxlVIwk82IhyO-jtqy3qcfzvlPzAYgiylWyZ7MIE_2D0ccMELt-HUls-54y8xPBz3eIEvz0DEI3Zi9Cf8B4OcGTdpRZRqwxVJnbts9VGqkIqF6sOAGS1YkkZs9YmCbfAZv5ust25-r6OPNolukk7suvEwb1T7IHLUqP4gSbnXpB4ycPDyhqfW3tlUt8e5_Bdtwjf9k3CtQO0DPNlL3M6odrHjs6GHec3jkahp44fFsZbAztj8hcVJXPn2X4zaHLXVR9q99rq1rCEpVA1Et-raCbL3LQanWYGmx1en5yZR6nuD3RdGetM0tYQZyrLk1U-aPPnXPmqsk-zb8l3Wj6L4mgZPaflDzQ5nwyXx9v_wB9VB8R-_gC5QyOBl8zKZlTdMxgDEp6mTNmaaoEj8BuDaitkfA-uxjmgzKuHSqsvU0UTElUKpvccCZrmWJSR4PEbAfqtb1ugVQZaAdJItF005gVnoZ0FnHJCm72NO8AJca1I5tA0oSXyhCn0AMJOy4IU8CgTbV2gmGBA_QThMAl2MLNY6q02LBvAXtZvxiDvFI3vPWAFBY7HtuBVkoRBv5NFBpQTAvmcQC0GU5z5tktuQMoHMOMQNSPznwLGYXQBZUoPwK7rN2NgrWkgL7MI6j7kb62r5vUp6BvDBMjBCY8IpQsW8xRijZvsQryBjiJ-Chb0LQZjmVE8KkfpzkGAtCXGKG8k1Cx8NwggtD88AlPQa5j0I0ZjkEncmOMp0W_fT7j3YD6rMEcaIlpzXk3ZoM-SvmepsNONG8gGNan6nJD1l0ZS4ndLq_fD1YNnqC26Gt6PdveZscu0D2Z__q4anhVu1Xp7u_y1tHh_MFHA5FYnbZN7VYlocq93NfvFc_cMPz6bj12v70JtjVC7U_sHNT8Rl0uY5UHln-A7O4veQCNCbVCF8PlNCp69u7p0AfFSdpnAurtNsEf7MSCjH8DTtf8h0_pOrx3K8OjnGPlWlqprZQordm7q2ukFdc9ScC9-ZkM29PNjND2gqpXC9ifD1tWwbAuA_fhrtawdSE8kSYV09yi7RDAmjQDVYkOerBAMW223RA9Kb03iKrf97haiX9d3UHw7L2uYjWK9NDK4NAbkRftIb3lOBf_UChGkEBrbL8s-RiC-ztGYR242OETijtoBbmzYQfbEwNMju7qEW2fsqNwwWE9fuY9lLE9W2ELAeK3c8RJSxeZWNf-48LSmIJxnIrbmuUWoC_M3kqs1KceCan3BUlK3nO4vXL1ptz_s_tpTgkWuUhCdLhlNnqvAd4Uf0uK-Cn5IhfVWd_T_toZgEmTQSShPgjD4jBpXAV54CHwI_0KibQx-cXwFQQpJeLvN4yA0qmSToCzAeeyCU6gUWRCmVGhYLWj-j5RZLQSPQfg5-BiEx0fLxfLsbDGfzU4XZyevXs8nwTYIp_Pl0fHy5NXJ8vVyPlu8Xs5efZ0En6yK2dHibHayXMzn89OTs8UMdthfAf1hLMGp5sb9bmp_Pv36P3RAYeU?type=png)](https://mermaid.live/edit#pako:eNqtmN1v2zYQwP8VQn3IGthBYqeuowEDuiTN8hCsaIIB27wHSqJsNpQokFRS9-N_3x0pUZ9OnbZ5iqjj8X53x7uTPwexTFgQBmtFiw25-32VE_jTZeQWVsGdNFSQ27IoxJacUxGXghou81XgRK242QpGrGQlmHIhwhfLZXycHE_gvZL3LHwxY_PTU_88feSJ2YSz4mOjqaXjl39XweFhe8G8PDwkX7wRTBOzYcRYA7U7V6bwfM9yTaghNN-SNX9gOTE8A8EJ4XksyoTnaxJJs4FHbnizmeaJ350kDB42SpZrlEsd9NEq-O9lGIZpmcfWCd7w6fS3L6vgOi9KE5ILutVEw2GMXLGcaa5XwRcSl5n13QO7rvU5xrEXCahwuG_i6j3yWlZvDkmVzAiIkmN4Zb0Rl0qx3ODihBRKPnCLS4nOaaE30jgXoZoKdQ0WKtCekGi7D2k7zB3qO-tkJEXjbxG_oneYg9U6njJ_YMq4aHLU5eJ1YA7gEbmsubidMAEUYKpz7topmpBYQSBjEEqlws2API0oCsZNxuqaKaGGNjwj3h-J5pScODIutl7urVTwsqYbedNE8YIZpsAuG8Qn_G4JmsS1YWRaQ0h5heeJIKz9fFAM4q9hp9juDuCYpV3ivxlVIwk82IhyO-jtqy3qcfzvlPzAYgiylWyZ7MIE_2D0ccMELt-HUls-54y8xPBz3eIEvz0DEI3Zi9Cf8B4OcGTdpRZRqwxVJnbts9VGqkIqF6sOAGS1YkkZs9YmCbfAZv5ust25-r6OPNolukk7suvEwb1T7IHLUqP4gSbnXpB4ycPDyhqfW3tlUt8e5_Bdtwjf9k3CtQO0DPNlL3M6odrHjs6GHec3jkahp44fFsZbAztj8hcVJXPn2X4zaHLXVR9q99rq1rCEpVA1Et-raCbL3LQanWYGmx1en5yZR6nuD3RdGetM0tYQZyrLk1U-aPPnXPmqsk-zb8l3Wj6L4mgZPaflDzQ5nwyXx9v_wB9VB8R-_gC5QyOBl8zKZlTdMxgDEp6mTNmaaoEj8BuDaitkfA-uxjmgzKuHSqsvU0UTElUKpvccCZrmWJSR4PEbAfqtb1ugVQZaAdJItF005gVnoZ0FnHJCm72NO8AJca1I5tA0oSXyhCn0AMJOy4IU8CgTbV2gmGBA_QThMAl2MLNY6q02LBvAXtZvxiDvFI3vPWAFBY7HtuBVkoRBv5NFBpQTAvmcQC0GU5z5tktuQMoHMOMQNSPznwLGYXQBZUoPwK7rN2NgrWkgL7MI6j7kb62r5vUp6BvDBMjBCY8IpQsW8xRijZvsQryBjiJ-Chb0LQZjmVE8KkfpzkGAtCXGKG8k1Cx8NwggtD88AlPQa5j0I0ZjkEncmOMp0W_fT7j3YD6rMEcaIlpzXk3ZoM-SvmepsNONG8gGNan6nJD1l0ZS4ndLq_fD1YNnqC26Gt6PdveZscu0D2Z__q4anhVu1Xp7u_y1tHh_MFHA5FYnbZN7VYlocq93NfvFc_cMPz6bj12v70JtjVC7U_sHNT8Rl0uY5UHln-A7O4veQCNCbVCF8PlNCp69u7p0AfFSdpnAurtNsEf7MSCjH8DTtf8h0_pOrx3K8OjnGPlWlqprZQordm7q2ukFdc9ScC9-ZkM29PNjND2gqpXC9ifD1tWwbAuA_fhrtawdSE8kSYV09yi7RDAmjQDVYkOerBAMW223RA9Kb03iKrf97haiX9d3UHw7L2uYjWK9NDK4NAbkRftIb3lOBf_UChGkEBrbL8s-RiC-ztGYR242OETijtoBbmzYQfbEwNMju7qEW2fsqNwwWE9fuY9lLE9W2ELAeK3c8RJSxeZWNf-48LSmIJxnIrbmuUWoC_M3kqs1KceCan3BUlK3nO4vXL1ptz_s_tpTgkWuUhCdLhlNnqvAd4Uf0uK-Cn5IhfVWd_T_toZgEmTQSShPgjD4jBpXAV54CHwI_0KibQx-cXwFQQpJeLvN4yA0qmSToCzAeeyCU6gUWRCmVGhYLWj-j5RZLQSPQfg5-BiEx0fLxfLsbDGfzU4XZyevXs8nwTYIp_Pl0fHy5NXJ8vVyPlu8Xs5efZ0En6yK2dHibHayXMzn89OTs8UMdthfAf1hLMGp5sb9bmp_Pv36P3RAYeU)
+## getCirculatingSupply
+```mermaid
+graph TB
+    subgraph "Circulating Supply Calculation"
+        style CirculatingSupply fill:#88c0d0, stroke:#2e3440, stroke-width:2px, shape:rect
+        CirculatingSupply(["**CirculatingSupply(t)** | Calculates the amount of tokens currently available in the market, differentiating between locked and unlocked tokens based on predefined rules."]):::sameColor
+        -->|"Input: Time t"| publicAllocationCirculating(["**Public Allocation Circulating(t)** | Calculates tokens from public allocation currently in circulation, considering lock-up periods and releases."]):::inputColor
+        CirculatingSupply -->|"Input: Time t"| ecosystemCirculating(["**Ecosystem Circulating(t)** | Tracks tokens allocated for ecosystem development, gradually releasing them based on milestones."]):::inputColor
+        CirculatingSupply -->|"Input: Time t"| investorsCirculating(["**Investors Circulating(t)** | Determines number of investor tokens unlocked over time, following specific vesting schedules."]):::inputColor
+        CirculatingSupply -->|"Input: Time t"| coreContributorsCirculating(["**Core Contributors Circulating(t)** | Monitors tokens allocated to core contributors, releasing them according to vesting terms."]):::inputColor
+        CirculatingSupply -->|"Input: Days since Genesis"| cumulativeInflation2(["**Cumulative Inflation to Current Day** | Reflects total amount of tokens added to supply due to inflation up to present day."]):::inputColor
+        ecosystemCirculating -->|"Input: Days since Genesis"| daysSinceGenesis1(["**Days Calculation for Ecosystem** | Helps determine specific release schedules for ecosystem tokens based on days elapsed since genesis."]):::inputColor
+        investorsCirculating -->|"Input: Days since Genesis"| daysSinceGenesis1:::inputColor
+        coreContributorsCirculating -->|"Input: Days since Genesis"| daysSinceGenesis1:::inputColor
+        ecosystemCirculating -->|"Event: One Year Mark"| oneYearAfterTGE(["**One Year After TGE** | Marks initial major release of ecosystem tokens."]):::eventColor
+        ecosystemCirculating -->|"Event: Four Year Mark"| fourYearsAfterTGE(["**Four Years After TGE** | Concludes release schedule for ecosystem tokens, fully integrating them into circulation."]):::eventColor
+        investorsCirculating -->|"Event: Two Year Mark"| twoYearsAfterTGE(["**Two Years After TGE** | Completes investor token vesting schedule, fully unlocking all investor tokens."]):::eventColor
+        coreContributorsCirculating -->|"Event: Three Year Mark"| threeYearsAfterTGE(["**Three Years After TGE** | Finalizes release of all core contributor tokens, aligning with end of vesting period."]):::eventColor
+        publicAllocationCirculating -->|"Event: TGE Date"| TGE(["**Token Generation Event** | Starting point for public token allocation and beginning of token circulation."]):::eventColor
+    end
+    classDef sameColor fill:#88c0d0,stroke:#2e3440,stroke-width:2px, shape:rect;
+    classDef inputColor fill:#b48ead,stroke:#2e3440,stroke-width:2px, shape:rect;
+    classDef eventColor fill:#ebcb8b,stroke:#2e3440,stroke-width:2px, shape:rect;
+
+```
+
+## getTotalSupply
+```mermaid
+graph TB
+    subgraph "Total Supply Calculation"
+        style TotalSupply fill:#88c0d0, stroke:#2e3440, stroke-width:2px, shape:rect
+        TotalSupply(["**TotalSupply(t)** | Calculates the total supply of tokens at any given time t, including both initial supply and tokens added through inflation."]):::sameColor
+        -->|"Input: Days since Genesis"| cumulativeInflation(["**cumulativeInflation(days)** | Accumulates total inflation from day 0 to the current day, providing a snapshot of total tokens generated by inflation."]):::inputColor
+        TotalSupply -->|"Input: Time t"| daysSinceGenesis(["**daysSinceGenesis(t)** | Converts the input time 't' into total days elapsed since genesis, critical for timing-based calculations."]):::inputColor
+        cumulativeInflation -->|"Input: Days - 1"| dailyInflationForDay(["**dailyInflationForDay(days)** | Determines tokens generated by inflation for any given day, essential for calculating total inflation recursively."]):::inputColor
+        dailyInflationForDay -->|"Input: Years since Genesis"| dailyInflationForYear(["**dailyInflationForYear(years)** | Projects daily inflation based on the year, adjusting for annual disinflation rate."]):::inputColor
+        dailyInflationForYear -->|"Input: Years since Genesis"| inflationRate(["**inflationRate(years)** | Calculates annual inflation rate, incorporating disinflation to reduce inflation over time."]):::inputColor
+        cumulativeInflation -->|"Recursive Call: Days - 1"| cumulativeInflation1(["**Previous Day's Cumulative Inflation**"]):::sameColor
+        dailyInflationForDay -->|"Recursive Call: Years - 1"| dailyInflationForYear1(["**Previous Year's Daily Inflation**"]):::sameColor
+        inflationRate -->|"Recursive Call: Years - 1"| inflationRate1(["**Previous Year's Inflation Rate**"]):::sameColor
+        TotalSupply -->|"Static Value"| initialTotalSupply(["**Initial Total Supply** | Predefined initial amount of tokens set at the network's genesis."]):::sameColor
+    end
+    classDef sameColor fill:#88c0d0,stroke:#2e3440,stroke-width:2px, shape:rect;
+    classDef inputColor fill:#b48ead,stroke:#2e3440,stroke-width:2px, shape:rect;
+    classDef eventColor fill:#ebcb8b,stroke:#2e3440,stroke-width:2px, shape:rect;
+
+```
