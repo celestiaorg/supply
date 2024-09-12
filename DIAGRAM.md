@@ -1,18 +1,5 @@
 # Token Supply Calculation System
 
-This document outlines the architecture of the token supply calculation system, which is designed to compute both the total and circulating supplies of tokens within a blockchain or similar decentralized network. The system handles various calculations based on time-since-genesis and specific events that influence token availability.
-
-## System Overview
-
-The architecture is divided into two main components:
-
-1. **Total Supply Calculation** - This component calculates the total number of tokens that have been generated, including those from initial issuance and those generated through inflationary mechanisms.
-2. **Circulating Supply Calculation** - This component estimates the number of tokens that are actually circulating in the market, accounting for locked tokens and those that have not yet been released into circulation.
-
-## Mermaid Diagram
-
-Below is a Mermaid diagram that illustrates the interactions and functions involved in calculating the total and circulating supplies:
-
 ```mermaid
 graph TB
     subgraph "Total Supply Calculation"
