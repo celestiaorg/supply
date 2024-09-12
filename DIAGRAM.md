@@ -47,6 +47,5 @@ graph TB
     end
     classDef sameColor fill:#156064,stroke:#ffffff,stroke-width:2px, shape:rect;
     classDef inputColor fill:#1f6f8b,stroke:#ffffff,stroke-width:2px, shape:rect;
-    classDef eventColor fill:#99d98c,stroke:#ffffff,stroke-width:2px, shape:rect;
-
+    classDef eventColor fill:#2a9d8f,stroke:#ffffff,stroke-width:2px, shape:rect;
 ```
