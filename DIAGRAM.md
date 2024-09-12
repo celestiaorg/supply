@@ -1,4 +1,4 @@
-# Token Supply Calculation System
+# Architecture Diagram
 
 ```mermaid
 graph TB
