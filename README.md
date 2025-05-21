@@ -5,6 +5,9 @@ This repo contains:
 1. Utilities for calculating the circulating and total supply of utia on a given date.
 1. An API with endpoints that return the current circulating and total supply.
 
+> [!NOTE]  
+> Note on methodology: due to complexity, this supply API does not adjust the circulating supply for tokens that were retroactively locked after TGE, for example due to CIP-31. As a result, the reported circulating supply may include a minor margin of error (likely no more than around 1%), decreasing to zero as lockups elapse.
+
 ## Usage
 
 1. Run the API server

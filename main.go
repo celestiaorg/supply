@@ -12,6 +12,8 @@ The API routes listed below return values in TIA:
 
 /v0/circulating-supply
 /v0/total-supply
+
+Note on methodology: due to complexity, this supply API does not adjust the circulating supply for tokens that were retroactively locked after TGE, for example due to CIP-31. As a result, the reported circulating supply may include a minor margin of error (likely no more than around 1%), decreasing to zero as lockups elapse.
 `
 
 func getLandingPage(c *gin.Context) {
