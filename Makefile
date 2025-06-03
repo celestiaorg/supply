@@ -28,14 +28,14 @@ docker-build:
 	@docker build . --tag "celestiaorg/supply:latest"
 .PHONY: docker-build
 
-## docker-tag: Tag the docker image so that it can be pushed to GHCR.
+## docker-tag: Tag the docker image so that it can be pushed to Scaleway.
 docker-tag:
-	@echo "--> Tagging the docker image so that it can be pushed to GHCR"
-	@docker tag celestiaorg/supply ghcr.io/celestiaorg/supply:latest
+	@echo "--> Tagging the docker image so that it can be pushed to Scaleway"
+	@docker tag celestiaorg/supply rg.fr-par.scw.cloud/supply/supply:latest
 .PHONY: docker-tag
 
-## docker-push: Push the docker image to GHCR. Requires the user to be logged in to GHCR.
+## docker-push: Push the docker image to Scaleway. Requires the user to be logged in to Scaleway.
 docker-push:
-	@echo "--> Pushing the docker image to GHCR"
-	@docker push ghcr.io/celestiaorg/supply:latest
+	@echo "--> Pushing the docker image to Scaleway"
+	@docker push rg.fr-par.scw.cloud/supply/supply:latest
 .PHONY: docker-push
