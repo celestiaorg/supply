@@ -49,4 +49,4 @@ make help
 
 ## Deployment
 
-The [docker.yml](./.github/workflows/docker.yml) workflow builds a Docker image and pushes it to a Scaleway container registry. The supply server is deployed via a Scaleway serverless container. CI will not automatically deploy the latest Docker image to the serverless container so you must do that manually if you want to deploy a new version of the supply server.
+The [docker.yml](./.github/workflows/docker.yml) workflow builds a Docker image and pushes it to GitHub Container Registry (GHCR). The supply server can be deployed using the Docker image from GHCR. CI will not automatically deploy the latest Docker image so you must do that manually if you want to deploy a new version of the supply server.
