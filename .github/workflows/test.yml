@@ -2,20 +2,14 @@ name: test
 on:
     pull_request:
 
-
-env:
-  GO_VERSION: '1.21.3'
-
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-go@v4
         with:
-          go-version: ${{ env.GO_VERSION }}
-
+          go-version-file: 'go.mod'
       - name: Run tests
         run: make test
         timeout-minutes: 5

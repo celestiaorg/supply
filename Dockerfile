@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 docker.io/golang:1.21-alpine3.18 AS builder
+FROM --platform=linux/amd64 docker.io/golang:1.22.6-alpine3.20 AS builder
 
 ENV CGO_ENABLED=0
 ENV GO111MODULE=on
