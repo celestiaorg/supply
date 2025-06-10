@@ -15,7 +15,9 @@ func TestCirculatingSupply(t *testing.T) {
 	testCases := []testCase{
 		{oneHourBeforeTGE, 0},
 		{TGE, 141_043_527_750_000},
+		{oneYearAfterTGEMinusOneDay, 220_824_349_667_524},
 		{oneYearAfterTGE, 398_395_290_749_715},
+		{oneYearAfterTGEPlusOneDay, 399_602_581_376_425},
 		{twoYearsAfterTGE, 839_606_500_049_419},
 		{threeYearsAfterTGE, 1_040_234_519_080_896},
 		{fourYearsAfterTGE, 1_178_923_710_072_480},
