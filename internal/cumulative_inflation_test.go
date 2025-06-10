@@ -28,3 +28,23 @@ func Test_cumulativeInflation(t *testing.T) {
 		})
 	}
 }
+
+func Test_dailyInflationForDay(t *testing.T) {
+	type testCase struct {
+		daysSinceGenesis int64
+		want             int64
+	}
+	testCases := []testCase{
+		{0, 219_178_082_191},
+		{1, 219_178_082_191},
+		{364, 219_178_082_191},
+		{365, 213_041_095_890},
+		{366, 213_041_095_890},
+	}
+	for _, tc := range testCases {
+		t.Run(fmt.Sprintf("daysSinceGenesis %v", tc.daysSinceGenesis), func(t *testing.T) {
+			got := dailyInflationForDay(tc.daysSinceGenesis)
+			assert.Equal(t, tc.want, got)
+		})
+	}
+}
