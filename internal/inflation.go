@@ -40,8 +40,7 @@ func inflationRate(t time.Time) float64 {
 // cumulativeInflation returns the total amount of utia that will be minted due
 // to inflation from genesis up until t.
 func cumulativeInflation(t time.Time) int64 {
-	daysSinceGenesis := daysSinceGenesis(t)
-	if daysSinceGenesis == 0 {
+	if t.Before(TGE) || t.Equal(TGE) {
 		return 0
 	}
 
