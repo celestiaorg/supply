@@ -52,7 +52,7 @@ func getDate(c *gin.Context) (time.Time, error) {
 	}
 	t, err := time.Parse(time.DateOnly, date)
 	if err != nil {
-		return time.Time{}, fmt.Errorf("Please provide date as YYYY-MM-DD. Invalid date format: %w", err)
+		return time.Time{}, fmt.Errorf("please provide date as YYYY-MM-DD. Invalid date format: %w", err)
 	}
 	return t, nil
 }
