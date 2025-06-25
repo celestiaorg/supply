@@ -10,7 +10,6 @@ func TotalSupply(t time.Time) int64 {
 	if t.Equal(TGE) {
 		return initialTotalSupplyInUtia
 	}
-	days := daysSinceGenesis(t)
-	inflation := cumulativeInflation(days)
+	inflation := cumulativeInflation(t)
 	return initialTotalSupplyInUtia + inflation
 }

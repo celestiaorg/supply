@@ -6,8 +6,7 @@ import (
 
 // CirculatingSupply returns the circulating supply of utia at the given time.
 func CirculatingSupply(t time.Time) int64 {
-	days := daysSinceGenesis(t)
-	return cumulativeInflation(days) +
+	return cumulativeInflation(t) +
 		publicAllocationCirculating(t) +
 		ecosystemCirculating(t) +
 		investorsCirculating(t) +
