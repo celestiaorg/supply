@@ -31,8 +31,9 @@ func roundToDecimalPlaces(value float64, places int) float64 {
 func inflationRate(t time.Time) float64 {
 	yearsSinceGenesis := yearsSinceGenesis(t)
 	inflationRate := initialInflationRate * math.Pow(float64(1-disinflationRate), float64(yearsSinceGenesis))
-	// Round to 5 decimal places to avoid floating-point precision issues
-	inflationRate = roundToDecimalPlaces(inflationRate, 5)
+
+	// HACK: round to 6 decimal places to avoid floating-point precision issues.
+	inflationRate = roundToDecimalPlaces(inflationRate, 6)
 	return max(inflationRate, targetInflationRate)
 }
 
