@@ -10,8 +10,9 @@ var (
 	oneYearAfterTGE            = TGE.AddDate(0, 0, 365) // October 30, 2024
 	oneYearAfterTGEPlusOneDay  = TGE.AddDate(0, 0, 366) // October 31, 2024
 
-	// TODO: CIP-29 hasn't activated on Mainnet yet. It will activate when v4
-	// activates on Mainnet so this date needs to be updated.
+	// CIP-29 activates on Mainnet at the v4 activation height height (6680339).
+	// This is an estimate for the date of activation.
+	// See https://www.mintscan.io/celestia/block/6680339
 	cip29ActivationDate = time.Date(2025, time.July, 28, 0, 0, 0, 0, time.UTC)
 
 	// TODO: verify these dates. The unlock dates may not be exactly N years
