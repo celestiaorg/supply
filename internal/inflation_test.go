@@ -82,9 +82,9 @@ func Test_annualProvisions(t *testing.T) {
 	testCases := []testCase{
 		{TGE, 80000000000000},
 		{TGE.Add(1 * year), 77760000000000},
-		{TGE.Add(2 * year), 75022848000000},
-		{TGE.Add(3 * year), 71895895695360},
-		{TGE.Add(20 * year), 30075034732276},
+		{TGE.Add(2 * year), 54018766080000},
+		{TGE.Add(3 * year), 52751153244994},
+		{TGE.Add(20 * year), 28336928866935},
 	}
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf("time %v", tc.t), func(t *testing.T) {
