@@ -16,9 +16,9 @@ func Test_inflationRate(t *testing.T) {
 	testCases := []testCase{
 		{TGE, 0.08},
 		{TGE.Add(1 * year), 0.072},
-		{cip29ActivationDate.Add(-1 * day), 0.072},
-		{cip29ActivationDate, 0.050009},
-		{cip29ActivationDate.Add(1 * day), 0.050009},
+		{cip29ActivationDate.Add(-1 * day), 0.072},   // Before CIP-29 activation
+		{cip29ActivationDate, 0.050009},              // CIP-29 activation
+		{cip29ActivationDate.Add(1 * day), 0.050009}, // After CIP-29 activation
 		{TGE.Add(2 * year), 0.046658},
 		{TGE.Add(3 * year), 0.043532},
 		{TGE.Add(18 * year), 0.015383},
