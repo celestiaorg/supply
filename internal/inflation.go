@@ -11,13 +11,12 @@ const (
 )
 
 const (
-	// Genesis era (before CIP-29)
+	// Genesis era (before CIP-29 activation in celestia-app app verrsion 4)
 	genesisInflationRate    = 0.08
 	genesisDisinflationRate = 0.1
-	// CIP-29 era (after CIP-29 activation)
+	// CIP-29 era (after CIP-29 activation in celestia-app app version 4)
 	cip29InflationRate    = 0.0536
 	cip29DisinflationRate = 0.067
-
 	// targetInflationRate is the inflation rate that the network aims to
 	// stabalize at. In practice, TargetInflationRate acts as a minimum so that
 	// the inflation rate doesn't decrease after reaching it.
