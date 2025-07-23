@@ -16,9 +16,13 @@ func Test_inflationRate(t *testing.T) {
 	testCases := []testCase{
 		{TGE, 0.08},
 		{TGE.Add(1 * year), 0.072},
-		{TGE.Add(2 * year), 0.0648},
-		{TGE.Add(3 * year), 0.05832},
-		{TGE.Add(20 * year), 0.015},
+		{cip29ActivationDate.Add(-1 * day), 0.072},
+		{cip29ActivationDate, 0.050009},
+		{cip29ActivationDate.Add(1 * day), 0.050009},
+		{TGE.Add(2 * year), 0.046658},
+		{TGE.Add(3 * year), 0.043532},
+		{TGE.Add(18 * year), 0.015383},
+		{TGE.Add(30 * year), 0.015},
 	}
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf("time %v", tc.t), func(t *testing.T) {

@@ -11,10 +11,13 @@ const (
 )
 
 const (
-	// initialInflationRate is the inflation rate that the network starts at.
-	initialInflationRate = 0.08
-	// disinflationRate is the rate at which the inflation rate decreases each year.
-	disinflationRate = 0.1
+	// Genesis era (before CIP-29)
+	genesisInflationRate    = 0.08
+	genesisDisinflationRate = 0.1
+	// CIP-29 era (after CIP-29 activation)
+	cip29InflationRate    = 0.0536
+	cip29DisinflationRate = 0.067
+
 	// targetInflationRate is the inflation rate that the network aims to
 	// stabalize at. In practice, TargetInflationRate acts as a minimum so that
 	// the inflation rate doesn't decrease after reaching it.
@@ -30,7 +33,9 @@ func roundToDecimalPlaces(value float64, places int) float64 {
 // inflationRate returns the inflation rate at the given time.
 func inflationRate(t time.Time) float64 {
 	yearsSinceGenesis := yearsSinceGenesis(t)
-	inflationRate := initialInflationRate * math.Pow(float64(1-disinflationRate), float64(yearsSinceGenesis))
+	initialRate := getInitialInflationRate(t)
+	disinflationRate := getDisinflationRate(t)
+	inflationRate := initialRate * math.Pow(float64(1-disinflationRate), float64(yearsSinceGenesis))
 
 	// HACK: round to 6 decimal places to avoid floating-point precision issues.
 	inflationRate = roundToDecimalPlaces(inflationRate, 6)
@@ -69,4 +74,18 @@ func dailyProvisions(t time.Time) int64 {
 
 func yearsSinceGenesis(t time.Time) int64 {
 	return daysSinceGenesis(t) / 365
+}
+
+func getInitialInflationRate(t time.Time) float64 {
+	if t.Before(cip29ActivationDate) {
+		return genesisInflationRate
+	}
+	return cip29InflationRate
+}
+
+func getDisinflationRate(t time.Time) float64 {
+	if t.Before(cip29ActivationDate) {
+		return genesisDisinflationRate
+	}
+	return cip29DisinflationRate
 }

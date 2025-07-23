@@ -12,7 +12,7 @@ var (
 
 	// TODO: CIP-29 hasn't activated on Mainnet yet. It will activate when v4
 	// activates on Mainnet so this date needs to be updated.
-	// cip29ActivationDate = time.Date(2025, time.July, 31, 0, 0, 0, 0, time.UTC)
+	cip29ActivationDate = time.Date(2025, time.July, 28, 0, 0, 0, 0, time.UTC)
 
 	// TODO: verify these dates. The unlock dates may not be exactly N years
 	// after TGE. Instead, they may be N * 365 days after.
