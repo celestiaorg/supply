@@ -16,9 +16,13 @@ func Test_inflationRate(t *testing.T) {
 	testCases := []testCase{
 		{TGE, 0.08},
 		{TGE.Add(1 * year), 0.072},
-		{TGE.Add(2 * year), 0.0648},
-		{TGE.Add(3 * year), 0.05832},
-		{TGE.Add(20 * year), 0.015},
+		{cip29ActivationDate.Add(-1 * day), 0.072},   // Before CIP-29 activation
+		{cip29ActivationDate, 0.050009},              // CIP-29 activation
+		{cip29ActivationDate.Add(1 * day), 0.050009}, // After CIP-29 activation
+		{TGE.Add(2 * year), 0.046658},
+		{TGE.Add(3 * year), 0.043532},
+		{TGE.Add(18 * year), 0.015383},
+		{TGE.Add(30 * year), 0.015},
 	}
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf("time %v", tc.t), func(t *testing.T) {
@@ -78,9 +82,9 @@ func Test_annualProvisions(t *testing.T) {
 	testCases := []testCase{
 		{TGE, 80000000000000},
 		{TGE.Add(1 * year), 77760000000000},
-		{TGE.Add(2 * year), 75022848000000},
-		{TGE.Add(3 * year), 71895895695360},
-		{TGE.Add(20 * year), 30075034732276},
+		{TGE.Add(2 * year), 54018766080000},
+		{TGE.Add(3 * year), 52751153244994},
+		{TGE.Add(20 * year), 28336928866935},
 	}
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf("time %v", tc.t), func(t *testing.T) {
