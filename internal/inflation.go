@@ -17,6 +17,9 @@ const (
 	// CIP-29 era (after CIP-29 activation in celestia-app app version 4)
 	cip29InflationRate    = 0.0536
 	cip29DisinflationRate = 0.067
+	// CIP-41 era (after CIP-41 activation in celestia-app app version 6)
+	cip41InflationRate    = 0.0267
+	cip41DisinflationRate = 0.067
 	// targetInflationRate is the inflation rate that the network aims to
 	// stabalize at. In practice, TargetInflationRate acts as a minimum so that
 	// the inflation rate doesn't decrease after reaching it.
@@ -79,12 +82,20 @@ func getInitialInflationRate(t time.Time) float64 {
 	if t.Before(cip29ActivationDate) {
 		return genesisInflationRate
 	}
-	return cip29InflationRate
+	if t.Before(cip41ActivationDate) {
+		return cip29InflationRate
+	}
+
+	return cip41InflationRate
 }
 
 func getDisinflationRate(t time.Time) float64 {
 	if t.Before(cip29ActivationDate) {
 		return genesisDisinflationRate
 	}
+	if t.Before(cip41ActivationDate) {
+		return cip29DisinflationRate
+	}
+
 	return cip29DisinflationRate
 }
