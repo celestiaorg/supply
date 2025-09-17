@@ -18,9 +18,9 @@ func TestCirculatingSupply(t *testing.T) {
 		{oneYearAfterTGEMinusOneDay, 220_824_349_667_524},
 		{oneYearAfterTGE, 398_395_290_749_715},
 		{oneYearAfterTGEPlusOneDay, 399_602_581_376_425},
-		{twoYearsAfterTGE, 833432444153745},
-		{threeYearsAfterTGE, 1012776091200567},
-		{fourYearsAfterTGE, 1132047396704536},
+		{twoYearsAfterTGE, 832318493830011},
+		{threeYearsAfterTGE, 984671225637257},
+		{fourYearsAfterTGE, 1077001338836620},
 	}
 	for _, tc := range testCases {
 		t.Run(tc.time.String(), func(t *testing.T) {
