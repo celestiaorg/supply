@@ -49,4 +49,6 @@ make help
 
 ## Deployment
 
-The [docker.yml](./.github/workflows/docker.yml) workflow builds a Docker image and pushes it to GitHub Container Registry (GHCR). The supply server can be deployed using the Docker image from GHCR. CI will not automatically deploy the latest Docker image so you must do that manually if you want to deploy a new version of the supply server.
+- The [docker.yml](./.github/workflows/docker.yml) workflow builds a Docker image and pushes it to GitHub Container Registry (GHCR). 
+- The supply server can be deployed using the Docker image from GHCR.
+- The production deployment (e.g. https://supply.celestia.org/) is hosted by a Google Cloud server. It runs watchtower and automatically updates to the latest Docker image hosted on GHCR.
