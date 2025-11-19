@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"time"
 
 	"github.com/celestiaorg/supply/internal"
@@ -15,6 +16,7 @@ The API routes listed below return values in TIA:
 /v0/circulating-supply?date=2025-05-31
 /v0/total-supply
 /v0/total-supply?date=2025-05-31
+/version
 
 Note on methodology: due to complexity, this supply API does not adjust the circulating supply for tokens that were retroactively locked after TGE, for example due to CIP-31. As a result, the reported circulating supply may include a minor margin of error (likely no more than around 1%), decreasing to zero as lockups elapse.
 `
@@ -43,6 +45,11 @@ func getTotalSupply(c *gin.Context) {
 	c.String(200, internal.FormatTia(cs))
 }
 
+func getVersion(c *gin.Context) {
+	gitCommit := os.Getenv("GIT_COMMIT")
+	c.String(200, gitCommit)
+}
+
 // getDate returns the date from the query parameter or the current date if no
 // query parameter is provided.
 func getDate(c *gin.Context) (time.Time, error) {
@@ -62,6 +69,7 @@ func main() {
 	router.GET("/", getLandingPage)
 	router.GET("/v0/circulating-supply", getCirculatingSupply)
 	router.GET("/v0/total-supply", getTotalSupply)
+	router.GET("/version", getVersion)
 	err := router.Run("0.0.0.0:8080")
 	if err != nil {
 		panic(err)
