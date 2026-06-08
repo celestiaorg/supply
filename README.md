@@ -49,6 +49,28 @@ make help
 
 ## Deployment
 
-- The [docker.yml](./.github/workflows/docker.yml) workflow builds a Docker image and pushes it to GitHub Container Registry (GHCR). 
-- The supply server can be deployed using the Docker image from GHCR.
-- The production deployment (e.g. https://supply.celestia.org/) is hosted by a Google Cloud server. It runs watchtower and automatically updates to the latest Docker image hosted on GHCR.
+- The [docker.yml](./.github/workflows/docker.yml) workflow builds a Docker image on every release tag and pushes it to GitHub Container Registry (GHCR).
+- The production deployment runs on a **Scaleway Kapsule** (managed Kubernetes) cluster. All manifests live in [celestiaorg/infrastructure](https://github.com/celestiaorg/infrastructure) under `k8s/websites/supply/`.
+- The deployment runs 2 replicas in the `websites` namespace, pinned to a specific image tag (e.g. `ghcr.io/celestiaorg/supply:v1.0.0`). It does **not** auto-update.
+- Two hostnames are served:
+  - **Production**: https://supply.celestia.org
+  - **Staging**: https://supply.celestia.dev
+
+### Updating the production deployment
+
+Every Monday at 09:00 UTC, a [workflow in the infrastructure repo](https://github.com/celestiaorg/infrastructure/blob/main/.github/workflows/supply-version-check.yml) checks for new supply releases and automatically opens a PR bumping the image tag if a newer version is found.
+
+To manually update or apply a change:
+
+1. Open a PR in [celestiaorg/infrastructure](https://github.com/celestiaorg/infrastructure) updating the image tag in `k8s/websites/supply/deployment.yaml`.
+2. After the PR is merged, apply the change:
+
+    ```shell
+    kubectl apply -f k8s/websites/supply/deployment.yaml
+    ```
+
+3. Verify the rollout:
+
+    ```shell
+    curl https://supply.celestia.org/version
+    ```
