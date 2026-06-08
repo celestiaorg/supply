@@ -47,7 +47,12 @@ func getTotalSupply(c *gin.Context) {
 
 func getVersion(c *gin.Context) {
 	gitCommit := os.Getenv("GIT_COMMIT")
-	c.String(200, gitCommit)
+	version := os.Getenv("VERSION")
+	if version != "" {
+		c.String(200, fmt.Sprintf("%s (%s)", version, gitCommit))
+	} else {
+		c.String(200, gitCommit)
+	}
 }
 
 // getDate returns the date from the query parameter or the current date if no

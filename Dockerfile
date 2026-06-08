@@ -15,6 +15,9 @@ FROM --platform=linux/amd64 docker.io/alpine:3.18.4
 ARG GIT_COMMIT
 ENV GIT_COMMIT=$GIT_COMMIT
 
+ARG VERSION
+ENV VERSION=$VERSION
+
 RUN apk update && apk add --no-cache bash curl jq
 COPY --from=builder /app/supply-server .
 
