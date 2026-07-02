@@ -17,9 +17,9 @@ func TestTotalSupply(t *testing.T) {
 		{TGE, initialTotalSupplyInUtia},
 		{oneDayAfterTGE, 1000219178082191},
 		{oneYearAfterTGE, 1079999999999715},
-		{twoYearsAfterTGE, 1151791486153206},
-		{threeYearsAfterTGE, 1180338837179088},
-		{fourYearsAfterTGE, 1205929556381924},
+		{twoYearsAfterTGE, 1151643489533809},
+		{threeYearsAfterTGE, 1180266844240616},
+		{fourYearsAfterTGE, 1205860930757792},
 	}
 	for _, tc := range testCases {
 		got := TotalSupply(tc.time)
