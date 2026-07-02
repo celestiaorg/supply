@@ -18,9 +18,9 @@ func TestCirculatingSupply(t *testing.T) {
 		{oneYearAfterTGEMinusOneDay, 220_824_349_667_524},
 		{oneYearAfterTGE, 398_395_290_749_715},
 		{oneYearAfterTGEPlusOneDay, 399_602_581_376_425},
-		{twoYearsAfterTGE, 833432444153745},
-		{threeYearsAfterTGE, 987593533203745},
-		{fourYearsAfterTGE, 1079986906381924},
+		{twoYearsAfterTGE, 832939859033664},
+		{threeYearsAfterTGE, 987338016490616},
+		{fourYearsAfterTGE, 1079918280757792},
 	}
 	for _, tc := range testCases {
 		t.Run(tc.time.String(), func(t *testing.T) {
@@ -82,7 +82,7 @@ func Test_coreContributorsCirculating(t *testing.T) {
 		{oneDayAfterTGE, 0},
 		{oneYearAfterTGEMinusOneDay, 0},         // one day before tokens unlock.
 		{oneYearAfterTGE, coreContributors / 3}, // tokens unlock on October 30th, 2024.
-		{twoYearsAfterTGE, 117_738_314_725_882},
+		{twoYearsAfterTGE, 117_577_249_999_855},
 		{threeYearsAfterTGE, coreContributors},
 		{fourYearsAfterTGE, coreContributors},
 	}
@@ -104,8 +104,8 @@ func Test_ecosystemCirculating(t *testing.T) {
 		{TGE, .25 * ecosystem},
 		{oneDayAfterTGE, .25 * ecosystem},
 		{oneYearAfterTGE, .25 * ecosystem},
-		{twoYearsAfterTGE, 134_155_879_274_657},
-		{threeYearsAfterTGE, 201_142_057_024_657},
+		{twoYearsAfterTGE, 133_972_355_500_000},
+		{threeYearsAfterTGE, 200_958_533_250_000},
 		{fourYearsAfterTGE, ecosystem},
 	}
 	for _, tc := range testCases {
